@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Object>
+  <Actions>
+    <Copy>
+        <Destination>ABC\DEF</Destination>
+        <Sources>
+          <Source>$(ProjectName)\$(Platform)$(Configuration)\*.dll</Source>
+        </Sources>
+      </Copy>
+  </Actions>
+
+  <Object>
+    <Parameters>
+        <Parameter>$(ProjectName)</Parameter>
+        <Parameter>$(Platform)$(Configuration)</Parameter>
+     </Parameters>
+  
+      <Filters>
+        <Filter>*.dll</Filter>
+        <Filter>*.lib</Filter>
+        <Filter>*.lib</Filter>
+        <Filter>*.cpp</Filter>
+      </Filters>
+
+      <BranchExplorer>
+        <Parent>D:\</Parent>
+        <Sub>$(ProjectName)</Sub>
+      </BranchExplorer>
+  </Object>
+<Object>

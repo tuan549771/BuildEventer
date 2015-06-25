@@ -93,9 +93,10 @@ if __name__ == "__main__":
     print "\nConfiguration file path: " + pathToXml
 
     # Read from xml file
-    actions = minidom.parse( pathToXml )
+    objects = minidom.parse( pathToXml )
+    actions = objects.getElementsByTagName( "Actions" )[ 0 ]
     copies = actions.getElementsByTagName( "Copy" )
-    parameterName = actions.getElementsByTagName( "Parameters" )[ 0 ]
+    parameterName = objects.getElementsByTagName( "Parameters" )[ 0 ]
     parameterNames = parameterName.getElementsByTagName( "Parameter" )
 
 

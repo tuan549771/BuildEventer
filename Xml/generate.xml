@@ -18,6 +18,7 @@
       <Filters>
         <Filter>*.dll</Filter>
         <Filter>*.lib</Filter>
+        <Filter>*.lib</Filter>
         <Filter>*.cpp</Filter>
       </Filters>
 

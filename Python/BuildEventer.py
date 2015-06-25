@@ -93,9 +93,10 @@ if __name__ == "__main__":
     print "\nConfiguration file path: " + pathToXml
 
     # Read from xml file
-    actions = minidom.parse( pathToXml )
+    objects = minidom.parse( pathToXml )
+    actions = objects.getElementsByTagName( "Actions" )[ 0 ]
     copies = actions.getElementsByTagName( "Copy" )
-    parameterName = actions.getElementsByTagName( "Parameters" )[ 0 ]
+    parameterName = objects.getElementsByTagName( "Parameters" )[ 0 ]
     parameterNames = parameterName.getElementsByTagName( "Parameter" )
 
 
@@ -126,7 +127,7 @@ if __name__ == "__main__":
         try:
             destinationPath = ReplaceString( destinationPath, strParameterNames, strParameterValues )
         except cReplaceStrError as e:
-            print ("Parameter names and parameter values are not match")
+            print ("Parameter names and parameter values are not match.")
             break
             
         #Get all sources from xml
@@ -137,7 +138,7 @@ if __name__ == "__main__":
                 try:
                     sourcePath = ReplaceString( sourcePath, strParameterNames, strParameterValues )
                 except cReplaceStrError as e:
-                    print ("Parameter names and parameter values are not match")
+                    print ("Parameter names and parameter values are not match.")
                     break
 
                 PostBuildCopy( sourcePath, destinationPath )

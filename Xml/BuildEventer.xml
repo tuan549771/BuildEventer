@@ -6,7 +6,7 @@
       <Destination>ABC\DEF</Destination>
       <Sources>
         <Source>$(ProjectName)\$(Platform)$(Configuration)\*.dll</Source>
-        <Source>$(ProjectName)\$(Platform)$(Configuration)\*.cpp</Source>
+        <Source>$(ProjectName)\$(Platform)$(Configuration)\*.txt</Source>
       </Sources>
     </Copy>
   </Actions>

@@ -1,52 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Actions>
+<Object>
+  <Actions>
+    <Copy>
+        <Destination>ABC\DEF</Destination>
+        <Sources>
+          <Source>$(ProjectName)\$(Platform)$(Configuration)\*.dll</Source>
+        </Sources>
+      </Copy>
+  </Actions>
 
-  <Parameters>
-    <Parameter>$(ProjectName)</Parameter>
-    <Parameter>$(Platform)$(Configuration)</Parameter>
-  </Parameters>
+  <Object>
+    <Parameters>
+        <Parameter>$(ProjectName)</Parameter>
+        <Parameter>$(Platform)$(Configuration)</Parameter>
+     </Parameters>
   
-  <Filters>
-    <Filter>*.dll</Filter>
-    <Filter>*.lib</Filter>
-    <Filter>*.cpp</Filter>
-  </Filters>
-  
-  <Copy>
-    <Destination>ABC\DEF</Destination>
-    <Sources>
-      <Source>$(ProjectName)\$(Platform)$(Configuration)\*.dll</Source>
-      <Source>$(ProjectName)\$(Platform)$(Configuration)\*.lib</Source>
-      <Source>$(ProjectName)\$(Platform)$(Configuration)\*.cpp</Source>
-    </Sources>
-  </Copy>
+      <Filters>
+        <Filter>*.dll</Filter>
+        <Filter>*.lib</Filter>
+        <Filter>*.cpp</Filter>
+      </Filters>
 
-  <Copy>
-    <Destination>ABC</Destination>
-    <Sources>
-      <Source>$(ProjectName)</Source>
-    </Sources>
-  </Copy>
-  
-  <BranchExplorer>
-    <Parent>D:\</Parent>
-    <Sub>$(ProjectName)</Sub>
-  </BranchExplorer>
-  <BranchExplorer>
-    <Parent>D:\$(ProjectName)</Parent>
-    <Sub>$(Platform)$(Configuration)</Sub>
-  </BranchExplorer>
-  <BranchExplorer>
-    <Parent>D:\$(ProjectName)\$(Platform)$(Configuration)</Parent>
-    <Sub>*.dll</Sub>
-  </BranchExplorer>
-  <BranchExplorer>
-    <Parent>D:\$(ProjectName)\$(Platform)$(Configuration)</Parent>
-    <Sub>*.lib</Sub>
-  </BranchExplorer>
-  <BranchExplorer>
-    <Parent>D:\$(ProjectName)\$(Platform)$(Configuration)</Parent>
-    <Sub>*.cpp</Sub>
-  </BranchExplorer>
-  
-</Actions>
+      <BranchExplorer>
+        <Parent>D:\</Parent>
+        <Sub>$(ProjectName)</Sub>
+      </BranchExplorer>
+  </Object>
+<Object>

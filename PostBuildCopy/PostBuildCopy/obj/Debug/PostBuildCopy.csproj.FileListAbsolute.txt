@@ -1,146 +1,18 @@
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\bin\Debug\PostBuildCopy.exe.config
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\bin\Debug\PostBuildCopy.exe
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\bin\Debug\PostBuildCopy.pdb
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\MainWindow.baml
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\MainWindow.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\App.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.cache
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.g.resources
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.Properties.Resources.resources
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.csproj.GenerateResource.Cache
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.exe
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.pdb
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\Windowns\WindowNewParameter.baml
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\Windowns\WindowNewParameter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\bin\Debug\PostBuildCopy.exe.config
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.exe
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.pdb
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\bin\Debug\PostBuildCopy.exe
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\bin\Debug\PostBuildCopy.pdb
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.csprojResolveAssemblyReference.cache
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\MainWindow.baml
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\Windowns\WindowNewParameter.baml
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\MainWindow.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\Windowns\WindowNewParameter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\App.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.cache
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.g.resources
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.Properties.Resources.resources
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.csproj.GenerateResource.Cache
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\Windowns\WindowNewFilter.baml
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\Windowns\WindowNewFilter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.lref
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\bin\Debug\PostBuildCopy.exe.config
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\PostBuildCopy.exe
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\PostBuildCopy.pdb
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\bin\Debug\PostBuildCopy.exe
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\bin\Debug\PostBuildCopy.pdb
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\PostBuildCopy.csprojResolveAssemblyReference.cache
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\UCParameters.baml
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\Windowns\WindowNewFilter.baml
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\Windowns\WindowNewParameter.baml
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\MainWindow.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\UCParameters.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\Windowns\WindowNewFilter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\Windowns\WindowNewParameter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\App.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.cache
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.lref
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\MainWindow.baml
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\PostBuildCopy.g.resources
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\PostBuildCopy.Properties.Resources.resources
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\PostBuildCopy.csproj.GenerateResource.Cache
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\bin\Debug\PostBuildCopy.exe.config
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.exe
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.pdb
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\bin\Debug\PostBuildCopy.exe
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\bin\Debug\PostBuildCopy.pdb
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.csprojResolveAssemblyReference.cache
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\Windowns\WindowNewFilter.baml
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\Windowns\WindowNewParameter.baml
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\MainWindow.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\Windowns\WindowNewFilter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\Windowns\WindowNewParameter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\App.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.cache
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.lref
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\MainWindow.baml
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.g.resources
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.Properties.Resources.resources
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\PostBuildCopy.csproj.GenerateResource.Cache
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\UI\DestinationsListBox.baml
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\UI\SourcesListBox.baml
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\UI\TreeExplorer.baml
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\UI\TreeFilter.baml
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\UI\TreeParameter.baml
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\UI\DestinationsListBox.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\UI\SourcesListBox.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\UI\TreeExplorer.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\UI\TreeFilter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\UI\TreeParameter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1 - Copy\PostBuildCopy\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\DestinationsListBox.baml
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\SourcesListBox.baml
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\TreeExplorer.baml
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\TreeFilter.baml
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\TreeParameter.baml
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\DestinationsListBox.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\SourcesListBox.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\TreeExplorer.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\TreeFilter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy1\PostBuildCopy\obj\Debug\UI\TreeParameter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\UI\DestinationsListBox.baml
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\UI\SourcesListBox.baml
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeExplorer.baml
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeFilter.baml
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeParameter.baml
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\UI\DestinationsListBox.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\UI\SourcesListBox.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeExplorer.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeFilter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeParameter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\UI\DestinationsListBox.baml
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\UI\SourcesListBox.baml
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\UI\TreeExplorer.baml
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\UI\TreeFilter.baml
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\UI\TreeParameter.baml
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\Windowns\WindowNewFilter.baml
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\UI\DestinationsListBox.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\UI\SourcesListBox.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\UI\TreeExplorer.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\UI\TreeFilter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\UI\TreeParameter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\Windowns\WindowNewFilter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Dell\Desktop\PostBuildCopy - Copy\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.lref
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\bin\Debug\PostBuildCopy.exe.config
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\PostBuildCopy.exe
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\PostBuildCopy.pdb
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\bin\Debug\PostBuildCopy.exe
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\bin\Debug\PostBuildCopy.pdb
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\PostBuildCopy.csprojResolveAssemblyReference.cache
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\UI\DestinationsListBox.baml
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\UI\SourcesListBox.baml
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\UI\TreeExplorer.baml
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\UI\TreeFilter.baml
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\UI\TreeParameter.baml
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\Windowns\WindowNewFilter.baml
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\Windowns\WindowNewParameter.baml
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\MainWindow.g.cs
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\UI\DestinationsListBox.g.cs
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\UI\SourcesListBox.g.cs
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\UI\TreeExplorer.g.cs
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\UI\TreeFilter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\UI\TreeParameter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\Windowns\WindowNewFilter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\Windowns\WindowNewParameter.g.cs
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\App.g.cs
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.cache
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.lref
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\MainWindow.baml
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\PostBuildCopy.g.resources
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\PostBuildCopy.Properties.Resources.resources
-C:\Users\Dell\Desktop\PostBuildCopu - Infomation\PostBuildCopy\obj\Debug\PostBuildCopy.csproj.GenerateResource.Cache
+C:\Users\Dell\Desktop\Important\PostBuildCopy\PostBuildCopy\bin\Debug\PostBuildCopy.exe.config
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\bin\Debug\PostBuildCopy.exe.config
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\bin\Debug\PostBuildCopy.exe
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\bin\Debug\PostBuildCopy.pdb
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.csprojResolveAssemblyReference.cache
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\UI\PathTreeView.baml
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\MainWindow.g.cs
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\UI\PathTreeView.g.cs
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\App.g.cs
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.cache
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy_MarkupCompile.lref
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\MainWindow.baml
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.g.resources
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.Properties.Resources.resources
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.csproj.GenerateResource.Cache
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.exe
+C:\Users\Dell\Desktop\Important\BuildEveter\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.pdb

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8B0406A9-AE0D-4EC3-8FDE-0C404D0C2E53}</ProjectGuid>
+    <ProjectGuid>{B680C7BC-F376-4BAB-8122-203B3DD352F4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PostBuildCopy</RootNamespace>
@@ -36,7 +36,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,29 +53,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\StringPath.cs" />
-    <Compile Include="Classes\SubFunctionsManager.cs" />
-    <Compile Include="Classes\VariablesConnectManager.cs" />
-    <Compile Include="UI\DestinationsListBox.xaml.cs">
-      <DependentUpon>DestinationsListBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\SourcesListBox.xaml.cs">
-      <DependentUpon>SourcesListBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\TreeExplorer.xaml.cs">
-      <DependentUpon>TreeExplorer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\TreeFilter.xaml.cs">
-      <DependentUpon>TreeFilter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\TreeParameter.xaml.cs">
-      <DependentUpon>TreeParameter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windowns\WindowNewFilter.xaml.cs">
-      <DependentUpon>WindowNewFilter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windowns\WindowNewParameter.xaml.cs">
-      <DependentUpon>WindowNewParameter.xaml</DependentUpon>
+    <Compile Include="Classes\PathTreeNodeData.cs" />
+    <Compile Include="Classes\TreeModel.cs" />
+    <Compile Include="UI\PathTreeView.xaml.cs">
+      <DependentUpon>PathTreeView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -86,42 +66,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Action.cs" />
-    <Compile Include="Classes\ActionManager.cs" />
-    <Compile Include="Classes\CopyMutipleSourcesToOneDest.cs" />
-    <Compile Include="Classes\Destination.cs" />
-    <Compile Include="Classes\Source.cs" />
-    <Compile Include="Classes\ViewModelBase.cs" />
-    <Compile Include="Classes\XmlCodeGenerator.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UI\DestinationsListBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\SourcesListBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\TreeExplorer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\TreeFilter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\TreeParameter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windowns\WindowNewFilter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windowns\WindowNewParameter.xaml">
+    <Page Include="UI\PathTreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,9 +102,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\virtium.jpg" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="PostBuildCopy.UI.PathTreeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PostBuildCopy.Classes"
+             mc:Ignorable="d">
+
+    <!-- FAMILY TREE -->
+    <TreeView Name="trvMenu"
+        TreeViewItem.Expanded="TreeExpanded">
+
+        <TreeView.ItemTemplate>
+            <HierarchicalDataTemplate ItemsSource="{Binding childrens}">
+                <TextBlock Text="{Binding path}" />
+            </HierarchicalDataTemplate>
+        </TreeView.ItemTemplate>
+
+        <TreeView.ItemContainerStyle>
+            <Style TargetType="{x:Type TreeViewItem}">
+                <EventSetter Event="TreeViewItem.Drop" Handler="TreeDrop"/>
+                <EventSetter Event="TreeViewItem.MouseMove" Handler="TreeMouseMove"/>
+            </Style>
+        </TreeView.ItemContainerStyle>
+        <TreeView.ContextMenu>
+            <ContextMenu>
+                <MenuItem Name="newItem" Header="New" Click="NewItem" IsEnabled="False"></MenuItem>
+                <MenuItem Name="deleteItem" Header="Delete" Click="DeleteItem" IsEnabled="False"></MenuItem>
+            </ContextMenu>
+        </TreeView.ContextMenu>
+    </TreeView>
+
+</UserControl>

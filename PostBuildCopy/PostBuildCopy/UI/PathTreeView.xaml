@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="PostBuildCopy.UI.PathTreeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PostBuildCopy.Classes"
+             mc:Ignorable="d"
+             x:Name="UCPathTreeView">
+
+    <!-- FAMILY TREE -->
+    <TreeView Name="treeView" 
+              TreeViewItem.Expanded="TreeExpanded"
+              TreeViewItem.MouseDown="TreeMouseDown"
+              FontSize="14">
+        <TreeView.ItemTemplate>
+            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                <TextBlock Text="{Binding Path}" Margin="3,0,3,0" Foreground="{Binding ForegroundBinding}"/>
+            </HierarchicalDataTemplate>
+        </TreeView.ItemTemplate>
+
+        <TreeView.ItemContainerStyle>
+            <Style TargetType="TreeViewItem">
+                <EventSetter Event="TreeViewItem.Drop" Handler="TreeDrop"/>
+                <EventSetter Event="TreeViewItem.MouseMove" Handler="TreeMouseMove"/>
+                <EventSetter Event="TreeViewItem.MouseRightButtonDown" Handler="TreeMouseRight"/>
+                <Setter Property="IsExpanded" Value="{Binding IsExpanded}"/>
+            </Style>
+        </TreeView.ItemContainerStyle>
+        <TreeView.ContextMenu>
+            <ContextMenu>
+                <MenuItem Name="newItem" 
+                          Header="New" 
+                          Click="TreeNewItem" 
+                          IsEnabled="{Binding AllowCreateNewPath}"/>
+                <MenuItem Name="deleteItem" 
+                          Header="Delete" 
+                          Click="TreeDeleteItem" 
+                          IsEnabled="{Binding AllowDeletePath}"/>
+                <MenuItem Name="refreshItem"
+                          Header="Refresh"
+                          Click="TreeRefreshItem"
+                          IsEnabled="{Binding AllowRefresh}"/>
+            </ContextMenu>
+        </TreeView.ContextMenu>
+    </TreeView>
+
+</UserControl>

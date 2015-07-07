@@ -1,102 +1,61 @@
-﻿//! Copyright 2015 Virtium Technology, Inc.
-//! All rights reserved
-//!
+﻿/*
+<License>
+Copyright 2015 Virtium Technology
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http ://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</License>
+*/
 
 using PostBuildCopy.Classes;
-using PostBuildCopy.Windowns;
-using System;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace PostBuildCopy.UI
 {
-    /// <summary>
-    /// Interaction logic for TreeFilter.xaml
-    /// </summary>
     public partial class TreeFilter : UserControl
     {
-        SubFunctionsManager subFunctions = new SubFunctionsManager();
+        #region Private members
+
+        private string m_StrRoot = "Filters";
+        private string m_Suggestion = "Right Click to add filters\nand you may drag them\ninto Explorer";
+        private PathTreeNodeData m_Root;
+
+        #endregion
+
+        #region Constructor
+
         public TreeFilter()
         {
             InitializeComponent();
-            TreeNodeFilter.Items.Add("Right click to add filters ");
+            InitializeData();
         }
 
-        // ===============
-        // Filter Treeview
-        // ===============
-        private void tvFilter_MouseRight(object sender, MouseButtonEventArgs e)
+        #endregion
+
+        #region Method
+
+        private void InitializeData()
         {
-            TreeViewItem item = e.Source as TreeViewItem;
-            if (null != item)
-                item.IsSelected = true;
+            m_Root = new PathTreeNodeData(m_StrRoot);
+            treeFilter.SetDataInput(m_StrRoot, m_Suggestion, m_Root);
         }
 
-        private void tvFilter_MouseMove(object sender, MouseEventArgs e)
+        public void SetDataFromXmlData(PathTreeNodeData iRoot)
         {
-            try
-            {
-                if (e.LeftButton == MouseButtonState.Pressed)
-                {
-
-                    VariablesManager.draggedItem = (TreeViewItem)tvFilter.SelectedItem;
-                    if (null != VariablesManager.draggedItem)
-                    {
-                        DragDropEffects finalDropEffect = DragDrop.DoDragDrop(tvFilter, tvFilter.SelectedValue, DragDropEffects.Move);
-
-                        if ((finalDropEffect == DragDropEffects.Move) && (null != VariablesManager.targetItem))
-                        {
-                            StringPath stringPath = new StringPath();
-                            stringPath.parentPath = subFunctions.GetPathFromExplorer(VariablesManager.targetItem);
-                            stringPath.subPath = VariablesManager.draggedItem.Header.ToString();
-                            foreach (StringPath str in VariablesManager.strBranchsExplorer)
-                                if ((stringPath.parentPath == str.parentPath) && (stringPath.subPath == str.subPath))
-                                {
-                                    MessageBox.Show(str.subPath + " exists","My App", MessageBoxButton.OK, MessageBoxImage.Information);
-                                    return;
-                                }
-                            VariablesManager.strBranchsExplorer.Add(stringPath);
-                            VariablesManager.oldStringPaths.Add(stringPath);
-                            subFunctions.CopyItem(VariablesManager.draggedItem, VariablesManager.targetItem);
-                            VariablesManager.targetItem = null;
-                            VariablesManager.draggedItem = null;
-                        }
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            treeFilter.SetDataRoot(iRoot);
         }
 
-        private void NewFilterMenu_Click(object sender, RoutedEventArgs e)
+        // Get data will return a root noot
+        public PathTreeNodeData GetData()
         {
-            TreeViewItem itemFilter = new TreeViewItem();
-            WindowNewFilter inputDialog = new WindowNewFilter();
-            if (inputDialog.ShowDialog() == true)
-            {
-                if (TreeNodeFilter.Items[0] is string)
-                    TreeNodeFilter.Items.RemoveAt(0);
-                itemFilter.Header = inputDialog.Answer;
-                VariablesManager.filters.Add(itemFilter.Header.ToString());
-                TreeNodeFilter.Items.Add(itemFilter);
-            }
-        }
-
-        private void FilterDeleteMenu_Click(object sender, RoutedEventArgs e)
-        {
-            TreeViewItem item1 = (TreeViewItem)tvFilter.SelectedItem;
-            if (null == item1 || TreeNodeFilter.Items[0] is string)
-                return;
-            foreach (TreeViewItem filter in TreeNodeFilter.Items)
-                if (filter.Header == item1.Header)
-                    VariablesManager.filters.Remove(item1.Header.ToString());
-            TreeNodeFilter.Items.Remove(item1);
-            if (1 > TreeNodeFilter.Items.Count)
-                TreeNodeFilter.Items.Add("Right click to add filters ");
-        }
+            return treeFilter.GetData();
+        } 
+        #endregion
     }
 }

@@ -22,19 +22,17 @@ namespace PostBuildCopy.UI
     /// </summary>
     public partial class PathTreeView : UserControl
     {
-        PathTreeNodeData root = new PathTreeNodeData();
+        ObservableCollection<PathTreeNodeData> root = new ObservableCollection<PathTreeNodeData>();
         public PathTreeView()
         {
             InitializeComponent();
-            
-            root =TreeModel.GetTreeNodeData();
-
+            root.Add(TreeModel.GetTreeNodeData());
             SetData(root);
         }
 
-        private void SetData(PathTreeNodeData root)
+        private void SetData(ObservableCollection<PathTreeNodeData> root)
         {
-            trvMenu.Items.Add(root);
+            treeView.ItemsSource = root;
         }
 
         private void TreeMouseMove(object sender, MouseEventArgs e)

@@ -12,30 +12,31 @@ namespace PostBuildCopy.Classes
     {
         public bool HasChildren(PathTreeNodeData iNode)
         {
-            if (0 < iNode.childrens.Count)
+            if (0 < iNode.Children.Count)
                 return true;
             return false;
         }
 
         public string GetFullPath(PathTreeNodeData iNode)
         {
-            string fullPath = iNode.path;
-            while (null != iNode.parent)
+            string fullPath = iNode.Path;
+            while (null != iNode.Parent)
             {
-                iNode = iNode.parent;
-                fullPath = iNode.path + "\\" + fullPath;
+                iNode = iNode.Parent;
+                fullPath = iNode.Path + "\\" + fullPath;
             }
             return fullPath;
         }
 
         public PathTreeNodeData()
         {
-            this.childrens = new ObservableCollection<PathTreeNodeData>();
+            this.Children = new ObservableCollection<PathTreeNodeData>();
+            this.Parent = null;
         }
 
-        public string path { get; set; }
-        public ObservableCollection<PathTreeNodeData> childrens { get; set; }
-        public PathTreeNodeData parent { get; set; }
+        public string Path { get; set; }
+        public ObservableCollection<PathTreeNodeData> Children { get; set; }
+        public PathTreeNodeData Parent { get; set; }
 
     }
 }

@@ -7,12 +7,12 @@
              mc:Ignorable="d">
 
     <!-- FAMILY TREE -->
-    <TreeView Name="trvMenu"
+    <TreeView Name="treeView"
         TreeViewItem.Expanded="TreeExpanded">
 
         <TreeView.ItemTemplate>
-            <HierarchicalDataTemplate ItemsSource="{Binding childrens}">
-                <TextBlock Text="{Binding path}" />
+            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                <TextBlock Text="{Binding Path}" />
             </HierarchicalDataTemplate>
         </TreeView.ItemTemplate>
 

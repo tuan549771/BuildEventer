@@ -27,11 +27,6 @@ namespace PostBuildCopy
         public MainWindow()
         {
             InitializeComponent();
-            //PathTreeNodeData root = new PathTreeNodeData();
-            //root = TreeModel.GetTreeNodeData();
-
-            //bool check = root.HasChildren(root);
-            //string fullPath = root.GetFullPath(root.Children[0].Children[0]);
         }
     }
 }

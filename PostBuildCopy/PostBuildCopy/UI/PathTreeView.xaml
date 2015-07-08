@@ -7,11 +7,10 @@
              mc:Ignorable="d">
 
     <!-- FAMILY TREE -->
-    <TreeView Name="treeView"
-        TreeViewItem.Expanded="TreeExpanded">
-
+    <TreeView Name="treeView" AllowDrop="True"
+              TreeViewItem.Expanded="TreeExpanded" FontSize="14">
         <TreeView.ItemTemplate>
-            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+            <HierarchicalDataTemplate ><!--ItemsSource="{Binding Children}"-->
                 <TextBlock Text="{Binding Path}" />
             </HierarchicalDataTemplate>
         </TreeView.ItemTemplate>

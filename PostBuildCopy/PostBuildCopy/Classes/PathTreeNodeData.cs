@@ -17,9 +17,14 @@ namespace PostBuildCopy.Classes
 
         public PathTreeNodeData()
         {
-            
             this.Children = new ObservableCollection<PathTreeNodeData>();
             this.Parent = null;
+        }
+
+        public void AddChild(PathTreeNodeData Node)
+        {
+            Node.Parent = Node;
+            Children.Add(Node);
         }
 
         public bool HasChildren(PathTreeNodeData iNode)

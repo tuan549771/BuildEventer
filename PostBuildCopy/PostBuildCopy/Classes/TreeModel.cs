@@ -11,12 +11,11 @@ namespace PostBuildCopy.Classes
     {
         public static PathTreeNodeData GetTreeNodeData()
         {
-            PathTreeNodeData root = new PathTreeNodeData() { Path = "A", Parent = null };
-            PathTreeNodeData child1 = new PathTreeNodeData() { Path = "A1", Parent = root };
-            child1.Children.Add(new PathTreeNodeData() { Path = "A1.1", Parent = child1 });
-            child1.Children.Add(new PathTreeNodeData() { Path = "A1.2", Parent = child1 });
+            PathTreeNodeData root = new PathTreeNodeData() { Path = "Item", Parent = null };
+            PathTreeNodeData child1 = new PathTreeNodeData() { Path = "Item1", Parent = root };
+            PathTreeNodeData child2 = new PathTreeNodeData() { Path = "Item2", Parent = root };
             root.Children.Add(child1);
-            root.Children.Add(new PathTreeNodeData() { Path = "A2", Parent = root });
+            root.Children.Add(child2);
             return root;
         }
     }

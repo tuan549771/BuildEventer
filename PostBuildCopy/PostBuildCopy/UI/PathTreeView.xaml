@@ -10,7 +10,7 @@
     <TreeView Name="treeView" AllowDrop="True"
               TreeViewItem.Expanded="TreeExpanded" FontSize="14">
         <TreeView.ItemTemplate>
-            <HierarchicalDataTemplate ><!--ItemsSource="{Binding Children}"-->
+            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                 <TextBlock Text="{Binding Path}" />
             </HierarchicalDataTemplate>
         </TreeView.ItemTemplate>
@@ -19,6 +19,7 @@
             <Style TargetType="{x:Type TreeViewItem}">
                 <EventSetter Event="TreeViewItem.Drop" Handler="TreeDrop"/>
                 <EventSetter Event="TreeViewItem.MouseMove" Handler="TreeMouseMove"/>
+                <EventSetter Event="TreeViewItem.MouseRightButtonDown" Handler="MouseRight"/>
             </Style>
         </TreeView.ItemContainerStyle>
         <TreeView.ContextMenu>

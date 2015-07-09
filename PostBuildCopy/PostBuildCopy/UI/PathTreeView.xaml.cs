@@ -1,6 +1,6 @@
 ﻿using PostBuildCopy.Classes;
 using PostBuildCopy.Widowns;
-using System.Collections.ObjectModel;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,8 +11,7 @@ namespace PostBuildCopy.UI
     public partial class PathTreeView : UserControl
     {
         // Member private
-        private ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
-        private PathTreeNodeData m_NewNodeTarget;
+        private PathTreeNodeData m_NodeSeleted;
 
         // On delegate Get Node Children
         public delegate void GetChildrenDelegate(PathTreeNodeData iNode);
@@ -26,12 +25,14 @@ namespace PostBuildCopy.UI
         public delegate void HandleOnPathCreate(PathTreeNodeData iNode, string iPath);
         public event HandleOnPathCreate OnPathCreate;
 
+        // On Path Delete
+        public delegate void HandleOnPathDelete(PathTreeNodeData iNode);
+        public event HandleOnPathDelete OnPathDelete;
+
         // Constructor
         public PathTreeView()
         {
             InitializeComponent();
-            m_Root.Add(TreeModel.GetTreeNodeData());
-            treeView.ItemsSource = m_Root;
             this.DataContext = this;
         }
 
@@ -83,7 +84,7 @@ namespace PostBuildCopy.UI
         private void MouseRight(object sender, MouseButtonEventArgs e)
         {
             TreeViewItem item = GetNearestContainer(e.OriginalSource as UIElement);
-            m_NewNodeTarget = (PathTreeNodeData)item.Header;
+            m_NodeSeleted = (PathTreeNodeData)item.Header;
             if (null != item)
                 item.IsSelected = true;
         }
@@ -98,13 +99,17 @@ namespace PostBuildCopy.UI
             if ((true == inputDialog.ShowDialog()) && (null != OnPathCreate))
             {
                 path = inputDialog.Path;
-                OnPathCreate(m_NewNodeTarget, path);
+                OnPathCreate(m_NodeSeleted, path);
             }
         }
 
         private void DeleteItem(object sender, RoutedEventArgs e)
         {
-
+            InputPathDialog inputDialog = new InputPathDialog();
+            if (null != OnPathDelete)
+            {
+                OnPathDelete(m_NodeSeleted);
+            }
         }
 
         // Walk up the element tree to the nearest tree view item.
@@ -122,32 +127,47 @@ namespace PostBuildCopy.UI
 
         #region Dependency property
 
-        public static readonly DependencyProperty
-           IsEnabledProperty = DependencyProperty.Register(
-               "IsEnabledNewPath", typeof(object), typeof(PathTreeView),
-               new UIPropertyMetadata("False"));
+        public static readonly DependencyProperty AllowCreateNewPathProperty =
+            DependencyProperty.RegisterAttached("AllowCreateNewPath", typeof(Boolean), typeof(PathTreeView),
+            new FrameworkPropertyMetadata(false));
 
-        public object IsEnabledNewPath
+        public Boolean AllowCreateNewPath
         {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
+            get { return (Boolean)GetValue(AllowCreateNewPathProperty); }
+            set { SetValue(AllowCreateNewPathProperty, value); }
         }
 
-        public static readonly DependencyProperty
-           AllowDropProperty = DependencyProperty.Register(
-               "AllowDrop", typeof(object), typeof(PathTreeView),
-               new UIPropertyMetadata("ABC"));
 
-        public object AllowDrop
+        public static readonly DependencyProperty AllowDeletePathProperty =
+            DependencyProperty.RegisterAttached("AllowDeletePath", typeof(Boolean), typeof(PathTreeView),
+            new FrameworkPropertyMetadata(false));
+
+        public Boolean AllowDeletePath
         {
-            get { return (bool)GetValue(AllowDropProperty); }
-            set { SetValue(AllowDropProperty, value); }
-        }
-        private static void OnValueChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
-        {
-            // do something when property changes
+            get { return (Boolean)GetValue(AllowDeletePathProperty); }
+            set { SetValue(AllowDeletePathProperty, value); }
         }
 
+        public static readonly DependencyProperty AllowDropTreeProperty =
+             DependencyProperty.RegisterAttached("AllowDropTree", typeof(Boolean), typeof(PathTreeView),
+             new FrameworkPropertyMetadata(false));
+
+        public Boolean AllowDropTree
+        {
+            get { return (Boolean)GetValue(AllowDropTreeProperty); }
+            set { SetValue(AllowDropTreeProperty, value); }
+        }
+
+
+        public static readonly DependencyProperty AllowExpandedProperty =
+             DependencyProperty.RegisterAttached("AllowExpanded", typeof(Boolean), typeof(PathTreeView),
+             new FrameworkPropertyMetadata(false));
+
+        public Boolean AllowExpanded
+        {
+            get { return (Boolean)GetValue(AllowExpandedProperty); }
+            set { SetValue(AllowExpandedProperty, value); }
+        }
         #endregion
     }
 }

@@ -21,12 +21,6 @@ namespace PostBuildCopy.Classes
             this.Parent = null;
         }
 
-        public void AddChild(PathTreeNodeData Node)
-        {
-            Node.Parent = Node;
-            Children.Add(Node);
-        }
-
         public bool HasChildren(PathTreeNodeData iNode)
         {
             if (0 < iNode.Children.Count)

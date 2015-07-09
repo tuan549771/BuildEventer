@@ -53,8 +53,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\ExplorerModel.cs" />
+    <Compile Include="Classes\FilterModel.cs" />
+    <Compile Include="Classes\ParameterModel.cs" />
     <Compile Include="Classes\PathTreeNodeData.cs" />
-    <Compile Include="Classes\TreeModel.cs" />
+    <Compile Include="Classes\Subfunction.cs" />
+    <Compile Include="UI\Explorer.xaml.cs">
+      <DependentUpon>Explorer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Filter.xaml.cs">
+      <DependentUpon>Filter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Parameter.xaml.cs">
+      <DependentUpon>Parameter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\PathTreeView.xaml.cs">
       <DependentUpon>PathTreeView.xaml</DependentUpon>
     </Compile>
@@ -68,6 +80,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UI\Explorer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Filter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Parameter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\PathTreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

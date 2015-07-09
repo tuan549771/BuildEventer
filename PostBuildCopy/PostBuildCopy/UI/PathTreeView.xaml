@@ -4,10 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PostBuildCopy.Classes"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             x:Name="UCPathTreeView">
 
     <!-- FAMILY TREE -->
-    <TreeView Name="treeView" AllowDrop="True"
+    <TreeView Name="treeView" AllowDrop="{Binding AllowDrop}"
+              
               TreeViewItem.Expanded="TreeExpanded" FontSize="14">
         <TreeView.ItemTemplate>
             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
@@ -24,8 +26,9 @@
         </TreeView.ItemContainerStyle>
         <TreeView.ContextMenu>
             <ContextMenu>
-                <MenuItem Name="newItem" Header="New" Click="NewItem" IsEnabled="False"></MenuItem>
-                <MenuItem Name="deleteItem" Header="Delete" Click="DeleteItem" IsEnabled="False"></MenuItem>
+                <MenuItem Name="newItem" Header="New" Click="NewItem" 
+                          IsEnabled="{Binding IsEnabledNewPath}"/>
+                <MenuItem Name="deleteItem" Header="Delete" Click="DeleteItem" IsEnabled="False"/>
             </ContextMenu>
         </TreeView.ContextMenu>
     </TreeView>

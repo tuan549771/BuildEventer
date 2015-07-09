@@ -23,7 +23,6 @@ namespace PostBuildCopy.Widowns
         public MainWindow()
         {
             InitializeComponent();
-            treeView.newItem.IsEnabled = true;
             treeView.GetChildren = GetTreeNodeChildren;
             treeView.OnPathCreate += treeView_OnPathCreate;
             treeView.OnNodeDrop += treeView_OnNodeDrop;

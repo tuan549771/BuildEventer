@@ -17,9 +17,9 @@ namespace PostBuildCopy.Widowns
     /// <summary>
     /// Interaction logic for InputPath.xaml
     /// </summary>
-    public partial class InputPath : Window
+    public partial class InputPathDialog : Window
     {
-        public InputPath()
+        public InputPathDialog()
         {
             InitializeComponent();
         }

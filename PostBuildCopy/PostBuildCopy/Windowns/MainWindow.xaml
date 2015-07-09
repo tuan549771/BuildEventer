@@ -5,6 +5,7 @@
 
         Title="MainWindow" Height="300" Width="300">
     <Grid Margin="10">
-        <local:PathTreeView x:Name="treeView"/>
+        <local:PathTreeView x:Name="treeView" AllowDrop="False"
+                           IsEnabledNewPath="True"/>
     </Grid>
 </Window>

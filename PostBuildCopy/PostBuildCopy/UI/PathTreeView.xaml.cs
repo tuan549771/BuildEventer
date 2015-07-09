@@ -11,8 +11,8 @@ namespace PostBuildCopy.UI
     public partial class PathTreeView : UserControl
     {
         // Member private
-        private ObservableCollection<PathTreeNodeData> m_root = new ObservableCollection<PathTreeNodeData>();
-        private PathTreeNodeData m_newNodeTarget;
+        private ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
+        private PathTreeNodeData m_NewNodeTarget;
 
         // On delegate Get Node Children
         public delegate void GetChildrenDelegate(PathTreeNodeData iNode);
@@ -30,8 +30,9 @@ namespace PostBuildCopy.UI
         public PathTreeView()
         {
             InitializeComponent();
-            m_root.Add(TreeModel.GetTreeNodeData());
-            treeView.ItemsSource = m_root;
+            m_Root.Add(TreeModel.GetTreeNodeData());
+            treeView.ItemsSource = m_Root;
+            this.DataContext = this;
         }
 
         // Get the PathTreeNodeData object from node that expanded
@@ -71,10 +72,10 @@ namespace PostBuildCopy.UI
             TreeViewItem container = GetNearestContainer(e.OriginalSource as UIElement);
             if (container != null)
             {
-                PathTreeNodeData sourceDrap = (PathTreeNodeData)e.Data.GetData(typeof(PathTreeNodeData));
-                PathTreeNodeData tagetDrop = (PathTreeNodeData)container.Header;
+                PathTreeNodeData sourceNode = (PathTreeNodeData)e.Data.GetData(typeof(PathTreeNodeData));
+                PathTreeNodeData targetNode = (PathTreeNodeData)container.Header;
                 if (null != OnNodeDrop)
-                    OnNodeDrop(sourceDrap, tagetDrop);
+                    OnNodeDrop(sourceNode, targetNode);
             }
         }
 
@@ -82,7 +83,7 @@ namespace PostBuildCopy.UI
         private void MouseRight(object sender, MouseButtonEventArgs e)
         {
             TreeViewItem item = GetNearestContainer(e.OriginalSource as UIElement);
-            m_newNodeTarget = (PathTreeNodeData)item.Header;
+            m_NewNodeTarget = (PathTreeNodeData)item.Header;
             if (null != item)
                 item.IsSelected = true;
         }
@@ -92,15 +93,12 @@ namespace PostBuildCopy.UI
         // Raise the OnPathCreate(PathTreeNodeData, a new path)
         private void NewItem(object sender, RoutedEventArgs e)
         {
-            string path = "#";
-            InputPath inputDialog = new InputPath();
-            if (null != inputDialog.ShowDialog())
+            string path = string.Empty;
+            InputPathDialog inputDialog = new InputPathDialog();
+            if ((true == inputDialog.ShowDialog()) && (null != OnPathCreate))
             {
                 path = inputDialog.Path;
-            }
-            if (null != OnPathCreate)
-            {
-                OnPathCreate(m_newNodeTarget, path);
+                OnPathCreate(m_NewNodeTarget, path);
             }
         }
 
@@ -120,5 +118,36 @@ namespace PostBuildCopy.UI
             }
             return container;
         }
+
+
+        #region Dependency property
+
+        public static readonly DependencyProperty
+           IsEnabledProperty = DependencyProperty.Register(
+               "IsEnabledNewPath", typeof(object), typeof(PathTreeView),
+               new UIPropertyMetadata("False"));
+
+        public object IsEnabledNewPath
+        {
+            get { return (bool)GetValue(IsEnabledProperty); }
+            set { SetValue(IsEnabledProperty, value); }
+        }
+
+        public static readonly DependencyProperty
+           AllowDropProperty = DependencyProperty.Register(
+               "AllowDrop", typeof(object), typeof(PathTreeView),
+               new UIPropertyMetadata("ABC"));
+
+        public object AllowDrop
+        {
+            get { return (bool)GetValue(AllowDropProperty); }
+            set { SetValue(AllowDropProperty, value); }
+        }
+        private static void OnValueChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            // do something when property changes
+        }
+
+        #endregion
     }
 }

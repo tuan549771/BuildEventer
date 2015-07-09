@@ -58,8 +58,8 @@
     <Compile Include="UI\PathTreeView.xaml.cs">
       <DependentUpon>PathTreeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windowns\InputPath.xaml.cs">
-      <DependentUpon>InputPath.xaml</DependentUpon>
+    <Compile Include="Windowns\InputPathDialog.xaml.cs">
+      <DependentUpon>InputPathDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windowns\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -72,7 +72,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windowns\InputPath.xaml">
+    <Page Include="Windowns\InputPathDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

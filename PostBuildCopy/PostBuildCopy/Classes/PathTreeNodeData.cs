@@ -21,11 +21,18 @@ namespace PostBuildCopy.Classes
             this.Parent = null;
         }
 
-        public bool HasChildren(PathTreeNodeData iNode)
+        // Constructor has 2 parameter Path and parent node
+        public PathTreeNodeData(string iPath, PathTreeNodeData iParent)
         {
-            if (0 < iNode.Children.Count)
-                return true;
-            return false;
+            this.Path = iPath;
+            this.Parent = iParent;
+            this.Children = null;
+        }
+
+        public void AddChild(PathTreeNodeData iChild)
+        {
+            iChild.Parent = this;
+            this.Children.Add(iChild);
         }
 
         public string GetFullPath(PathTreeNodeData iNode)
@@ -37,6 +44,25 @@ namespace PostBuildCopy.Classes
                 fullPath = iNode.Path + "\\" + fullPath;
             }
             return fullPath;
+        }
+
+        public bool HasChildren(PathTreeNodeData iNode)
+        {
+            if (0 < iNode.Children.Count)
+                return true;
+            return false;
+        }
+
+        public bool HasPathChild(string iPathChild)
+        {
+            foreach (PathTreeNodeData child in this.Children)
+            {
+                if (child.Path == iPathChild)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

@@ -11,28 +11,29 @@ namespace PostBuildCopy.UI
     /// </summary>
     public partial class Explorer : UserControl
     {
-        private ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
+        // On delegate Get Node Children
+        public delegate void SetRootTreeDelegate(PathTreeNodeData iRootNode);
+        public SetRootTreeDelegate SetRootTree;
+
         public Explorer()
         {
             InitializeComponent();
-            m_Root.Add(ExplorerModel.GetTreeNodeData());
-            UCExplorer.treeView.ItemsSource = m_Root;
-            UCExplorer.GetChildren = GetTreeNodeChildren;
-            UCExplorer.OnNodeDrop += treeView_OnNodeDrop;
+            treeViewExplorer.SetData(ExplorerModel.GetTreeNodeData());
+            treeViewExplorer.GetChildren = GetTreeNodeChildren;
+            treeViewExplorer.OnNodeDrop += treeView_OnNodeDrop;
         }
-
-        void treeView_OnNodeDrop(PathTreeNodeData nodeSource, PathTreeNodeData nodeTarget)
-        {
-            PathTreeNodeData node = new PathTreeNodeData() { Path = nodeSource.Path, Parent = nodeTarget };
-            nodeTarget.Children.Add(node);
-        }
-
 
         private void GetTreeNodeChildren(PathTreeNodeData iNode)
         {
-            iNode.Children.Clear();
             string cd = iNode.GetFullPath(iNode);
             ExplorerModel.GetTreeNode(cd, iNode);
         }
+
+        private void treeView_OnNodeDrop(PathTreeNodeData iNodeSource, PathTreeNodeData iNodeTarget)
+        {
+            if (false == iNodeTarget.HasPathChild(iNodeSource.Path))
+                iNodeTarget.AddChild(iNodeSource);
+        }
+
     }
 }

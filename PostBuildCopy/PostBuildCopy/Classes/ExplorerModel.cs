@@ -18,22 +18,24 @@ namespace PostBuildCopy.Classes
             {
                 string[] dirs = Directory.GetDirectories(iPath);
                 string[] files = Directory.GetFiles(iPath);
-                foreach (string dir in dirs)
-                {
-                    string pathName = Path.GetFileName(dir);
-                    PathTreeNodeData node = new PathTreeNodeData() { Path = pathName };
-                    iNode.Children.Add(node);
-                    node.Parent = iNode;
-                }
-                foreach (string file in files)
-                {
-                    string pathName = Path.GetFileName(file);
-                    PathTreeNodeData node = new PathTreeNodeData() { Path = pathName };
-                    iNode.Children.Add(node);
-                    node.Parent = iNode;
-                }
+                GetFileSystemIntoTreeNode(dirs, iNode);
+                GetFileSystemIntoTreeNode(files, iNode);
             }
         }
 
+        // Get files system and assign filename into node path
+        public static void GetFileSystemIntoTreeNode(string[] strPaths, PathTreeNodeData iNode)
+        {
+            foreach (string strPath in strPaths)
+            {
+                string pathName = Path.GetFileName(strPath);
+                if (false == iNode.HasPathChild(pathName))
+                {
+                    PathTreeNodeData node = new PathTreeNodeData() { Path = pathName };
+                    iNode.AddChild(node);
+                }
+            }
+        }
     }
 }
+

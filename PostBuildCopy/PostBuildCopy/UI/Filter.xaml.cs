@@ -9,7 +9,8 @@ namespace PostBuildCopy.UI
     /// </summary>
     public partial class Filter : UserControl
     {
-        private ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
+        private PathTreeNodeData Root = new PathTreeNodeData();
+
         public Filter()
         {
             InitializeComponent();
@@ -18,20 +19,28 @@ namespace PostBuildCopy.UI
 
         private void Initialize()
         {
-            m_Root.Add(FilterModel.GetTreeNodeData());
-            UCFilter.treeView.ItemsSource = m_Root;
-            UCFilter.OnPathCreate += UCFilter_OnPathCreate;
-            UCFilter.OnPathDelete += UCFilter_OnPathDelete;
+            Root = FilterModel.GetTreeNodeData();
+            treeViewFilter.SetData(Root);
+            treeViewFilter.OnPathCreate += UCFilter_OnPathCreate;
+            treeViewFilter.OnPathDelete += UCFilter_OnPathDelete;
         }
 
-        private void UCFilter_OnPathCreate(PathTreeNodeData iNode, string iPath)
+        private void UCFilter_OnPathCreate(PathTreeNodeData iNode, string iPathChildNode)
         {
-            Subfunction.CreatePath(iNode, m_Root[0], iPath, FilterModel.suggest);
+            // We will add node into the root node
+            // Thus, iNodeParent no use here
+            // We will use the root node that path name is Parameters
+            PathTreeNodeData node = new PathTreeNodeData() { Path = iPathChildNode };
+            Root.AddChild(node);
+            if (true == Root.HasPathChild(FilterModel.suggest))
+                UCFilter_OnPathDelete(Root.Children[0]);
         }
 
         private void UCFilter_OnPathDelete(PathTreeNodeData iNode)
         {
-            Subfunction.DeletePath(iNode, FilterModel.suggest);
+            PathTreeNodeData parent = iNode.Parent;
+            if (null != iNode.Parent)
+                parent.Children.Remove(iNode);
         }
     }
 }

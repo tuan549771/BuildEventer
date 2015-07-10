@@ -1,6 +1,7 @@
 ﻿using PostBuildCopy.Classes;
 using PostBuildCopy.Widowns;
 using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,6 +13,7 @@ namespace PostBuildCopy.UI
     {
         // Member private
         private PathTreeNodeData m_NodeSeleted;
+        public ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
 
         // On delegate Get Node Children
         public delegate void GetChildrenDelegate(PathTreeNodeData iNode);
@@ -34,6 +36,13 @@ namespace PostBuildCopy.UI
         {
             InitializeComponent();
             this.DataContext = this;
+        }
+
+        // Set Data
+        public void SetData(PathTreeNodeData iNodeRoot)
+        {
+            m_Root.Add(iNodeRoot);
+            treeView.ItemsSource = m_Root;
         }
 
         // Get the PathTreeNodeData object from node that expanded

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PostBuildCopy.UI"
              mc:Ignorable="d">
     <Grid>
-        <local:PathTreeView x:Name="UCExplorer"
+        <local:PathTreeView x:Name="treeViewExplorer"
                             AllowDropTree="True"/>
     </Grid>
 </UserControl>

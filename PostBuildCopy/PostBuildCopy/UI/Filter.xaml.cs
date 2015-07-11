@@ -9,8 +9,9 @@ namespace PostBuildCopy.UI
     /// </summary>
     public partial class Filter : UserControl
     {
-        private PathTreeNodeData root = new PathTreeNodeData();
-        public string suggestion = "Right Click to add Filters\nand you may drag them\ninto Explorer";
+        private string strRoot = "Filters";
+        private string suggestion = "Right Click to add Filters\nand you may drag them\ninto Explorer";
+        private PathTreeNodeData root;
 
         public Filter()
         {
@@ -20,7 +21,9 @@ namespace PostBuildCopy.UI
 
         private void Initialize()
         {
-            root = FilterModel.GetTreeNodeData(suggestion);
+            root = new PathTreeNodeData(strRoot);
+            PathTreeNodeData suggestionNode = new PathTreeNodeData(suggestion);
+            root.AddChild(suggestionNode);
             treeViewFilter.SetData(root);
             treeViewFilter.OnPathCreate += UCFilter_OnPathCreate;
             treeViewFilter.OnPathDelete += UCFilter_OnPathDelete;
@@ -35,17 +38,16 @@ namespace PostBuildCopy.UI
 
             PathTreeNodeData node = new PathTreeNodeData(iPathChildNode);
             root.AddChild(node);
-            if (true == root.ContainsChild(suggestion))
+            if (true == root.ContainsChildPath(suggestion))
                 UCFilter_OnPathDelete(root.Children[0]);
         }
 
         private void UCFilter_OnPathDelete(PathTreeNodeData iNode)
         {
             PathTreeNodeData parent = iNode.Parent;
-            if (null != iNode.Parent)
-                parent.Children.Remove(iNode);
-            // Add suggestion if no have
-            if (0 == parent.Children.Count)
+            parent.DeleteChild(iNode);
+            // Add suggestion if no have 
+            if (false == parent.HasChildren())
             {
                 PathTreeNodeData node = new PathTreeNodeData(suggestion);
                 root.AddChild(node);

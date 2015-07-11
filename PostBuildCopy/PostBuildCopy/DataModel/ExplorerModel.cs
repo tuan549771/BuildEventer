@@ -7,7 +7,7 @@ namespace PostBuildCopy.Classes
         public static PathTreeNodeData GetTreeNodeData()
         {
             string currentDirectory = @"C:\Users\Dell\Desktop\New folder";//Directory.GetCurrentDirectory();
-            PathTreeNodeData root = new PathTreeNodeData() { Path = currentDirectory, Parent = null };
+            PathTreeNodeData root = new PathTreeNodeData(currentDirectory);
             GetTreeNode(currentDirectory, root);
             return root;
         }

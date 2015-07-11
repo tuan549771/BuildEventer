@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace PostBuildCopy.Classes
 {
@@ -38,12 +32,20 @@ namespace PostBuildCopy.Classes
 
         public void AddChild(PathTreeNodeData iChild)
         {
-            if (false == this.ContainsChild(iChild.Path))
+            if (false == this.ContainsChildPath(iChild.Path))
             {
                 string path = String.Copy(iChild.Path);
                 PathTreeNodeData child = new PathTreeNodeData(path, this);
                 this.Children.Add(child);
+                return;
             }
+            MessageBox.Show("\"" + iChild.Path + "\"" + " has existed in " + "\"" + this.Path + "\"", "Information");
+        }
+
+        public void DeleteChild(PathTreeNodeData iChild)
+        {
+            if (null != iChild.Parent)
+                this.Children.Remove(iChild);
         }
 
         public string GetFullPath(PathTreeNodeData iNode)
@@ -67,14 +69,14 @@ namespace PostBuildCopy.Classes
             return relativePath;
         }
 
-        public bool HasChildren(PathTreeNodeData iNode)
+        public bool HasChildren()
         {
-            if (0 < iNode.Children.Count)
+            if (0 < this.Children.Count)
                 return true;
             return false;
         }
 
-        public bool ContainsChild(string iPathChild)
+        public bool ContainsChildPath(string iPathChild)
         {
             foreach (PathTreeNodeData child in this.Children)
             {

@@ -15,7 +15,12 @@ namespace PostBuildCopy.Widowns
         public MainWindow()
         {
             InitializeComponent();
-            
+            Register();
+        }
+
+        private void Register()
+        {
+            UIDestinations.LoadItemListBox(UISources.UCSources.SelectedIndexLB, UISources.LoadListBoxItemSources1);
         }
 
         private void btnLoadXml_Click(object sender, RoutedEventArgs e)

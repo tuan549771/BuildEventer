@@ -6,7 +6,7 @@ namespace PostBuildCopy.Classes
     {
         public static PathTreeNodeData GetTreeNodeData()
         {
-            string currentDirectory = @"C:\Users\Dell\Desktop\New folder";
+            string currentDirectory = @"C:\Users\Dell\Desktop\New folder";//Directory.GetCurrentDirectory();
             PathTreeNodeData root = new PathTreeNodeData() { Path = currentDirectory, Parent = null };
             GetTreeNode(currentDirectory, root);
             return root;
@@ -29,11 +29,8 @@ namespace PostBuildCopy.Classes
             foreach (string strPath in strPaths)
             {
                 string pathName = Path.GetFileName(strPath);
-                if (false == iNode.PathChildNodeExist(pathName))
-                {
-                    PathTreeNodeData node = new PathTreeNodeData(pathName);
-                    iNode.AddChild(node);
-                }
+                PathTreeNodeData node = new PathTreeNodeData(pathName);
+                iNode.AddChild(node);
             }
         }
     }

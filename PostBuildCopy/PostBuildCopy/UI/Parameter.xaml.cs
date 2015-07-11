@@ -10,7 +10,7 @@ namespace PostBuildCopy.UI
     public partial class Parameter : UserControl
     {
         private PathTreeNodeData root = new PathTreeNodeData();
-        public string suggest = "Right Click to add parameters\nand you may drag them\ninto Explorer";
+        private string suggestion = "Right Click to add parameters\nand you may drag them\ninto Explorer";
         public Parameter()
         {
             InitializeComponent();
@@ -19,7 +19,7 @@ namespace PostBuildCopy.UI
 
         private void Initialize()
         {
-            root = ParameterModel.GetTreeNodeData();
+            root = ParameterModel.GetTreeNodeData(suggestion);
             UCParameter.SetData(root);
             UCParameter.OnPathCreate += UCParameter_OnPathCreate;
             UCParameter.OnPathDelete += UCParameter_OnPathDelete;
@@ -30,9 +30,9 @@ namespace PostBuildCopy.UI
             // We will add node into the root node
             // Thus, iNodeParent no use here
             // We will use the root node that path name is Parameters
-            PathTreeNodeData node = new PathTreeNodeData() { Path = iPathChildNode };
+            PathTreeNodeData node = new PathTreeNodeData(iPathChildNode);
             root.AddChild(node);
-            if (true == root.PathChildNodeExist(suggest))
+            if (true == root.HasPathChild(suggestion))
                 UCParameter_OnPathDelete(root.Children[0]);
         }
 
@@ -41,9 +41,12 @@ namespace PostBuildCopy.UI
             PathTreeNodeData parent = iNode.Parent;
             if (null != iNode.Parent)
                 parent.Children.Remove(iNode);
-            // Add suggest if no have
-            //if (0 == parent.Children.Count)
-                //UCParameter_OnPathCreate(m_Root[0], ParameterModel.suggest);
+            // Add suggestion if no have
+            if (0 == parent.Children.Count)
+            {
+                PathTreeNodeData node = new PathTreeNodeData(suggestion);
+                root.AddChild(node);
+            }
         }
     }
 }

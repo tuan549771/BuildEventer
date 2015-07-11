@@ -38,9 +38,12 @@ namespace PostBuildCopy.Classes
 
         public void AddChild(PathTreeNodeData iChild)
         {
-            string path = String.Copy(iChild.Path);
-            PathTreeNodeData child = new PathTreeNodeData(path, this);
-            this.Children.Add(child);
+            if (false == this.HasPathChild(iChild.Path))
+            {
+                string path = String.Copy(iChild.Path);
+                PathTreeNodeData child = new PathTreeNodeData(path, this);
+                this.Children.Add(child);
+            }
         }
 
         public string GetFullPath(PathTreeNodeData iNode)
@@ -71,7 +74,7 @@ namespace PostBuildCopy.Classes
             return false;
         }
 
-        public bool PathChildNodeExist(string iPathChild)
+        public bool HasPathChild(string iPathChild)
         {
             foreach (PathTreeNodeData child in this.Children)
             {

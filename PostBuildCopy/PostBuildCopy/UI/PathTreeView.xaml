@@ -9,9 +9,10 @@
 
     <!-- FAMILY TREE -->
     <TreeView Name="treeView" 
-              AllowDrop="{Binding AllowDropTree}" 
+              AllowDrop="{Binding AllowDropTree}"
               ItemsSource="{Binding AssignItemsSource}"
               TreeViewItem.Expanded="TreeExpanded" 
+             
               FontSize="14">
         <TreeView.ItemTemplate>
             <HierarchicalDataTemplate ItemsSource="{Binding Children}">

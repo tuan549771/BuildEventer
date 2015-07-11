@@ -9,7 +9,8 @@ namespace PostBuildCopy.UI
     /// </summary>
     public partial class Parameter : UserControl
     {
-        private PathTreeNodeData Root = new PathTreeNodeData();
+        private PathTreeNodeData root = new PathTreeNodeData();
+        public string suggest = "Right Click to add parameters\nand you may drag them\ninto Explorer";
         public Parameter()
         {
             InitializeComponent();
@@ -18,8 +19,8 @@ namespace PostBuildCopy.UI
 
         private void Initialize()
         {
-            Root = ParameterModel.GetTreeNodeData();
-            UCParameter.SetData(Root);
+            root = ParameterModel.GetTreeNodeData();
+            UCParameter.SetData(root);
             UCParameter.OnPathCreate += UCParameter_OnPathCreate;
             UCParameter.OnPathDelete += UCParameter_OnPathDelete;
         }
@@ -30,9 +31,9 @@ namespace PostBuildCopy.UI
             // Thus, iNodeParent no use here
             // We will use the root node that path name is Parameters
             PathTreeNodeData node = new PathTreeNodeData() { Path = iPathChildNode };
-            Root.AddChild(node);
-            if (true == Root.HasPathChild(ParameterModel.suggest))
-                UCParameter_OnPathDelete(Root.Children[0]);
+            root.AddChild(node);
+            if (true == root.PathChildNodeExist(suggest))
+                UCParameter_OnPathDelete(root.Children[0]);
         }
 
         private void UCParameter_OnPathDelete(PathTreeNodeData iNode)

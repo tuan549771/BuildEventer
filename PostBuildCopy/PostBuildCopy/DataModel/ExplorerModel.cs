@@ -29,9 +29,9 @@ namespace PostBuildCopy.Classes
             foreach (string strPath in strPaths)
             {
                 string pathName = Path.GetFileName(strPath);
-                if (false == iNode.HasPathChild(pathName))
+                if (false == iNode.PathChildNodeExist(pathName))
                 {
-                    PathTreeNodeData node = new PathTreeNodeData() { Path = pathName };
+                    PathTreeNodeData node = new PathTreeNodeData(pathName);
                     iNode.AddChild(node);
                 }
             }

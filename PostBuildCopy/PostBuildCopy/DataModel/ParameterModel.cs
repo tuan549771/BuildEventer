@@ -9,7 +9,7 @@ namespace PostBuildCopy.Classes
 {
     public class ParameterModel
     {
-        public static string suggest = "Right Click to add parameters\nand you may drag them into Explorer";
+        public static string suggest = "Right Click to add parameters\nand you may drag them\ninto Explorer";
         public static PathTreeNodeData GetTreeNodeData()
         {
             string strRoot = "Parameters";

@@ -168,15 +168,15 @@ namespace PostBuildCopy.UI
         }
 
 
-        public static readonly DependencyProperty AllowExpandedProperty =
-             DependencyProperty.RegisterAttached("AllowExpanded", typeof(Boolean), typeof(PathTreeView),
-             new FrameworkPropertyMetadata(false));
+        //public static readonly DependencyProperty AllowExpandedProperty =
+        //     DependencyProperty.RegisterAttached("AllowExpanded", typeof(Boolean), typeof(PathTreeView),
+        //     new FrameworkPropertyMetadata(false));
 
-        public Boolean AllowExpanded
-        {
-            get { return (Boolean)GetValue(AllowExpandedProperty); }
-            set { SetValue(AllowExpandedProperty, value); }
-        }
+        //public Boolean AllowExpanded
+        //{
+        //    get { return (Boolean)GetValue(AllowExpandedProperty); }
+        //    set { SetValue(AllowExpandedProperty, value); }
+        //}
         #endregion
     }
 }

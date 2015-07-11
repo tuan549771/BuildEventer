@@ -31,7 +31,7 @@ namespace PostBuildCopy.UI
 
         private void treeView_OnNodeDrop(PathTreeNodeData iNodeSource, PathTreeNodeData iNodeTarget)
         {
-            if (false == iNodeTarget.HasPathChild(iNodeSource.Path))
+            if (false == iNodeTarget.PathChildNodeExist(iNodeSource.Path))
                 iNodeTarget.AddChild(iNodeSource);
         }
 

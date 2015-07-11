@@ -8,8 +8,11 @@
              x:Name="UCPathTreeView">
 
     <!-- FAMILY TREE -->
-    <TreeView Name="treeView" AllowDrop="{Binding AllowDropTree}" ItemsSource="{Binding AssignItemsSource}"
-              TreeViewItem.Expanded="TreeExpanded" FontSize="14">
+    <TreeView Name="treeView" 
+              AllowDrop="{Binding AllowDropTree}" 
+              ItemsSource="{Binding AssignItemsSource}"
+              TreeViewItem.Expanded="TreeExpanded" 
+              FontSize="14">
         <TreeView.ItemTemplate>
             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                 <TextBlock Text="{Binding Path}"/>
@@ -21,14 +24,17 @@
                 <EventSetter Event="TreeViewItem.Drop" Handler="TreeDrop"/>
                 <EventSetter Event="TreeViewItem.MouseMove" Handler="TreeMouseMove"/>
                 <EventSetter Event="TreeViewItem.MouseRightButtonDown" Handler="MouseRight"/>
-                <Setter Property="IsExpanded" Value="{Binding AllowExpanded}"/>
             </Style>
         </TreeView.ItemContainerStyle>
         <TreeView.ContextMenu>
             <ContextMenu>
-                <MenuItem Name="newItem" Header="New" Click="NewItem" 
+                <MenuItem Name="newItem" 
+                          Header="New" 
+                          Click="NewItem" 
                           IsEnabled="{Binding AllowCreateNewPath}"/>
-                <MenuItem Name="deleteItem" Header="Delete" Click="DeleteItem" 
+                <MenuItem Name="deleteItem" 
+                          Header="Delete" 
+                          Click="DeleteItem" 
                           IsEnabled="{Binding AllowDeletePath}"/>
             </ContextMenu>
         </TreeView.ContextMenu>

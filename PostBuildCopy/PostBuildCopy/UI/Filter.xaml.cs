@@ -35,7 +35,7 @@ namespace PostBuildCopy.UI
 
             PathTreeNodeData node = new PathTreeNodeData(iPathChildNode);
             root.AddChild(node);
-            if (true == root.HasPathChild(suggestion))
+            if (true == root.ContainsChild(suggestion))
                 UCFilter_OnPathDelete(root.Children[0]);
         }
 

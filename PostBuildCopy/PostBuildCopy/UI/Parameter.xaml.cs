@@ -32,7 +32,7 @@ namespace PostBuildCopy.UI
             // We will use the root node that path name is Parameters
             PathTreeNodeData node = new PathTreeNodeData(iPathChildNode);
             root.AddChild(node);
-            if (true == root.HasPathChild(suggestion))
+            if (true == root.ContainsChild(suggestion))
                 UCParameter_OnPathDelete(root.Children[0]);
         }
 

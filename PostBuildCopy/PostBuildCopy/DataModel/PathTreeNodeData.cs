@@ -38,7 +38,7 @@ namespace PostBuildCopy.Classes
 
         public void AddChild(PathTreeNodeData iChild)
         {
-            if (false == this.HasPathChild(iChild.Path))
+            if (false == this.ContainsChild(iChild.Path))
             {
                 string path = String.Copy(iChild.Path);
                 PathTreeNodeData child = new PathTreeNodeData(path, this);
@@ -74,7 +74,7 @@ namespace PostBuildCopy.Classes
             return false;
         }
 
-        public bool HasPathChild(string iPathChild)
+        public bool ContainsChild(string iPathChild)
         {
             foreach (PathTreeNodeData child in this.Children)
             {

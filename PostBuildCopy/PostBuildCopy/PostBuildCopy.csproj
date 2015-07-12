@@ -55,8 +55,12 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Action.cs" />
     <Compile Include="Classes\ActionManager.cs" />
+    <Compile Include="Classes\BranchsExplorer.cs" />
     <Compile Include="Classes\CopySourcesToDestination.cs" />
     <Compile Include="Classes\PathDataModel.cs" />
+    <Compile Include="Classes\CouplePath.cs" />
+    <Compile Include="Classes\XmlGenerator.cs" />
+    <Compile Include="Classes\XmlLoader.cs" />
     <Compile Include="DataModel\ExplorerModel.cs" />
     <Compile Include="DataModel\FilterModel.cs" />
     <Compile Include="DataModel\ParameterModel.cs" />

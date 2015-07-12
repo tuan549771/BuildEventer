@@ -33,12 +33,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Row="0" Grid.ColumnSpan="2" Height="25" Background="Gray">Parameters and Filters</Label>
-                <local:Parameter x:Name="UIParameter" Grid.Column="0" Grid.Row="1" AllowDrop="False">
+                <local:Parameter x:Name="UIParameter" Grid.Column="0" Grid.Row="1">
                 </local:Parameter>
 
                 <GridSplitter Width="2" Background="Gray" Grid.Column="0" Grid.Row="1"  />
 
-                <local:Filter x:Name="UIFilter" Grid.Column="1" Grid.Row="1" AllowDrop="False"/>
+                <local:Filter x:Name="UIFilter" Grid.Column="1" Grid.Row="1"/>
             </Grid>
             <!--######################-->
 

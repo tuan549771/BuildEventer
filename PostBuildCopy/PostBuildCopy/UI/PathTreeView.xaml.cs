@@ -41,9 +41,43 @@ namespace PostBuildCopy.UI
         // Set Data
         public void SetData(PathTreeNodeData iNodeRoot)
         {
-            m_Root.Add(iNodeRoot);
+            if (0 == m_Root.Count)
+            {
+                m_Root.Add(iNodeRoot);
+            }
+            else
+            {
+                m_Root[0] = iNodeRoot;
+            }
             treeView.ItemsSource = m_Root;
+            
+            //foreach (var item in treeView.Items)
+            //{
+            //    DependencyObject dObject = treeView.ItemContainerGenerator.ContainerFromItem(item);
+            //    CollapseTreeviewItems(((TreeViewItem)dObject));
+            //}
         }
+
+        //private void CollapseTreeviewItems(TreeViewItem Item)
+        //{
+        //    Item.IsExpanded = false;
+
+        //    foreach (var item in Item.Items)
+        //    {
+        //        DependencyObject dObject = treeView.ItemContainerGenerator.ContainerFromItem(item);
+
+        //        if (dObject != null)
+        //        {
+        //            ((TreeViewItem)dObject).IsExpanded = false;
+
+        //            if (((TreeViewItem)dObject).HasItems)
+        //            {
+        //                CollapseTreeviewItems(((TreeViewItem)dObject));
+        //            }
+        //        }
+        //    }
+        //}
+
 
         // Get the PathTreeNodeData object from node that expanded
         // With each child, call delegate GetChildren
@@ -115,7 +149,7 @@ namespace PostBuildCopy.UI
         private void DeleteItem(object sender, RoutedEventArgs e)
         {
             InputPathDialog inputDialog = new InputPathDialog();
-            if (null != OnPathDelete)
+            if ((null != OnPathDelete) && (null != m_NodeSeleted))
             {
                 OnPathDelete(m_NodeSeleted);
             }

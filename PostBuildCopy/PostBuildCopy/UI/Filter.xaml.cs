@@ -11,23 +11,39 @@ namespace PostBuildCopy.UI
     {
         private string strRoot = "Filters";
         private string suggestion = "Right Click to add Filters\nand you may drag them\ninto Explorer";
-        private PathTreeNodeData root;
-
+        private static PathTreeNodeData root;
         public Filter()
         {
             InitializeComponent();
-            Initialize();
+            InitializeData();
+            InitializeEvent();
         }
 
-        private void Initialize()
+        private void InitializeData()
         {
             root = new PathTreeNodeData(strRoot);
             PathTreeNodeData suggestionNode = new PathTreeNodeData(suggestion);
             root.AddChild(suggestionNode);
-            treeViewFilter.SetData(root);
-            treeViewFilter.OnPathCreate += UCFilter_OnPathCreate;
-            treeViewFilter.OnPathDelete += UCFilter_OnPathDelete;
+            UCFilter.SetData(root);
         }
+
+        public void SetDataRoot(PathTreeNodeData iRoot)
+        {
+            root = iRoot;
+            UCFilter.SetData(root);
+        }
+
+        public static PathTreeNodeData GetData()
+        {
+            return root;
+        }
+
+        private void InitializeEvent()
+        {
+            UCFilter.OnPathCreate +=UCFilter_OnPathCreate;
+            UCFilter.OnPathDelete +=UCFilter_OnPathDelete;
+        }
+
 
         private void UCFilter_OnPathCreate(PathTreeNodeData iNode, string iPathChildNode)
         {
@@ -46,7 +62,7 @@ namespace PostBuildCopy.UI
         {
             PathTreeNodeData parent = iNode.Parent;
             parent.DeleteChild(iNode);
-            // Add suggestion if no have 
+            // Add suggestion if no have suggestion node
             if (false == parent.HasChildren())
             {
                 PathTreeNodeData node = new PathTreeNodeData(suggestion);

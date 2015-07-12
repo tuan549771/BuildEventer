@@ -1,9 +1,11 @@
 ﻿using Microsoft.Win32;
 using PostBuildCopy.Classes;
+using PostBuildCopy.UI;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace PostBuildCopy.Widowns
 {
@@ -12,8 +14,6 @@ namespace PostBuildCopy.Widowns
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
-
         public MainWindow()
         {
             InitializeComponent();
@@ -30,16 +30,33 @@ namespace PostBuildCopy.Widowns
             string pathToXmlFile = GetFileDialog();
             if (null == pathToXmlFile)
                 return;
-            MessageBox.Show("Implementing...");
+
+            // loading data parameters treeview
+            PathTreeNodeData parameterNode = new PathTreeNodeData();
+            parameterNode = xmlLoader.LoadListPathFromXmlToNodeTree(pathToXmlFile, "Parameters", "Parameter");
+            UIParameter.SetDataRoot(parameterNode);
+
+            // loading data filters treeview
+            PathTreeNodeData filterNode = new PathTreeNodeData();
+            filterNode = xmlLoader.LoadListPathFromXmlToNodeTree(pathToXmlFile, "Filters", "Filter");
+            UIFilter.SetDataRoot(filterNode);
+
+            // loading data the branchs of explorer
+            BranchsExplorer.SetBranchsExplorers(xmlLoader.LoadExplorer(pathToXmlFile));
+
+            // loading data listBoxs
+            ActionManager.actions = xmlLoader.LoadActionsManager(pathToXmlFile);
+            listBoxDestinations.UCDestination.SetData(ActionManager.GetListDestinationOfActionManager());
+            listBoxDestinations.UCDestination.lbPath.SelectedIndex = 0;
+            Explorer.Initialize();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            List<string> iListParameter = new List<string>();
-            List<string> iListFilter = new List<string>();
-            List<StringPath> iStringPaths = new List<StringPath>();
-            xmlGenerator.GenerateXml(ActionManager.actions, iListParameter, iListFilter, iStringPaths);
-            MessageBox.Show("Implementing...");
+            PathTreeNodeData parameterNode = Parameter.GetData();
+            PathTreeNodeData filterNode = Filter.GetData();
+            List<CouplePath> couplePaths = BranchsExplorer.GetBranchsExplorers();
+            xmlGenerator.GenerateXml(ActionManager.actions, parameterNode, filterNode, couplePaths);
         }
 
         private string GetFileDialog()
@@ -54,5 +71,6 @@ namespace PostBuildCopy.Widowns
         }
 
         private XmlGenerator xmlGenerator = new XmlGenerator();
+        private XmlLoader xmlLoader = new XmlLoader();
     }
 }

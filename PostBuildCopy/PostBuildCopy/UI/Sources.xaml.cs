@@ -31,9 +31,9 @@ namespace PostBuildCopy.UI
         public void LoadListBoxItemSources1(int index)
         {
             if (-1 != index)
-                UCSources.lbPath.ItemsSource = (ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources;
+                UCSources.SetData((ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources);
             else
-                UCSources.lbPath.ItemsSource = null;
+                UCSources.SetData(null);
         }
 
         private void UCSources_OnPathDrop(PathTreeNodeData iNodeDropped)

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Objects>
+  <Parameters>
+    <Parameter>$(Project)1</Parameter>
+    <Parameter>$(Project)3</Parameter>
+  </Parameters>
+  <Actions>
+    <Copy>
+      <Destination>ABC</Destination>
+      <Sources>
+        <Source>ABC\goals - Copy (2).pdf</Source>
+        <Source>ABC\goals - Copy (3).pdf</Source>
+        <Source>ABC\$(Project)1\$(Project)2\$(Project)3\$(Project)4</Source>
+      </Sources>
+    </Copy>
+    <Copy>
+      <Destination>BindingText</Destination>
+      <Sources>
+        <Source>$(Project)1\$(Project)4</Source>
+        <Source>$(Project)1\$(Project)2</Source>
+        <Source>$(Project)1\$(Project)3</Source>
+      </Sources>
+    </Copy>
+  </Actions>
+  <Filters>
+    <Filter>$(Project)2</Filter>
+    <Filter>$(Project)4</Filter>
+  </Filters>
+  <BranchExplorers>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder\ABC</Parent>
+      <Sub>$(Project)1</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder\ABC\$(Project)1</Parent>
+      <Sub>$(Project)2</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder\ABC\$(Project)1\$(Project)2</Parent>
+      <Sub>$(Project)3</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder\ABC\$(Project)1\$(Project)2\$(Project)3</Parent>
+      <Sub>$(Project)4</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder</Parent>
+      <Sub>$(Project)1</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder\$(Project)1</Parent>
+      <Sub>$(Project)2</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder\$(Project)1</Parent>
+      <Sub>$(Project)3</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder\$(Project)1</Parent>
+      <Sub>$(Project)4</Sub>
+    </BranchExplorer>
+  </BranchExplorers>
+</Objects>

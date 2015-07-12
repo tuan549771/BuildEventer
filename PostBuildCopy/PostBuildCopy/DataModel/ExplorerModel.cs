@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace PostBuildCopy.Classes
 {
@@ -20,7 +21,9 @@ namespace PostBuildCopy.Classes
                 string[] files = Directory.GetFiles(iPath);
                 GetFileSystemIntoTreeNode(dirs, iNode);
                 GetFileSystemIntoTreeNode(files, iNode);
+
             }
+            GetBranchsExplorersIntoTreeNode(iNode);
         }
 
         // Get files system and assign filename into node path
@@ -30,7 +33,19 @@ namespace PostBuildCopy.Classes
             {
                 string pathName = Path.GetFileName(strPath);
                 PathTreeNodeData node = new PathTreeNodeData(pathName);
-                iNode.AddChild(node);
+                iNode.AddChildNoMessageExsit(node);
+            }
+        }
+
+        // Loading from BranchsExplorer
+        public static void GetBranchsExplorersIntoTreeNode(PathTreeNodeData iNode)
+        {
+            List<string> subPaths = new List<string>();
+            subPaths = BranchsExplorer.GetSubPathExplorer(iNode.GetFullPath(iNode));
+            foreach (string subPath in subPaths)
+            {
+                PathTreeNodeData node = new PathTreeNodeData(subPath);
+                iNode.AddChildNoMessageExsit(node);
             }
         }
     }

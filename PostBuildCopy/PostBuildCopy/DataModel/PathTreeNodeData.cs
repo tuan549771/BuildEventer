@@ -42,6 +42,17 @@ namespace PostBuildCopy.Classes
             MessageBox.Show("\"" + iChild.Path + "\"" + " has existed in " + "\"" + this.Path + "\"", "Information");
         }
 
+        public void AddChildNoMessageExsit(PathTreeNodeData iChild)
+        {
+            if (false == this.ContainsChildPath(iChild.Path))
+            {
+                string path = String.Copy(iChild.Path);
+                PathTreeNodeData child = new PathTreeNodeData(path, this);
+                this.Children.Add(child);
+                return;
+            }
+        }
+
         public void DeleteChild(PathTreeNodeData iChild)
         {
             if (null != iChild.Parent)

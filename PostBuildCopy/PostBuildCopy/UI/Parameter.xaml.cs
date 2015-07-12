@@ -11,19 +11,35 @@ namespace PostBuildCopy.UI
     {
         private string strRoot = "Parameters";
         private string suggestion = "Right Click to add parameters\nand you may drag them\ninto Explorer";
-        private PathTreeNodeData root;
+        private static PathTreeNodeData root;
         public Parameter()
         {
             InitializeComponent();
-            Initialize();
+            InitializeData();
+            InitializeEvent();
         }
 
-        private void Initialize()
+        private void InitializeData()
         {
             root = new PathTreeNodeData(strRoot);
             PathTreeNodeData suggestionNode = new PathTreeNodeData(suggestion);
             root.AddChild(suggestionNode);
             UCParameter.SetData(root);
+        }
+
+        public void SetDataRoot(PathTreeNodeData iRoot)
+        {
+            root = iRoot;
+            UCParameter.SetData(root);
+        }
+
+        public static PathTreeNodeData GetData()
+        {
+            return root;
+        }
+
+        private void InitializeEvent()
+        {
             UCParameter.OnPathCreate += UCParameter_OnPathCreate;
             UCParameter.OnPathDelete += UCParameter_OnPathDelete;
         }
@@ -41,9 +57,9 @@ namespace PostBuildCopy.UI
 
         private void UCParameter_OnPathDelete(PathTreeNodeData iNode)
         {
-            PathTreeNodeData parent = iNode.Parent;
+            PathTreeNodeData parent = parent = iNode.Parent;
             parent.DeleteChild(iNode);
-            // Add suggestion if no have child
+            // Add suggestion if no have suggestion node
             if (false == parent.HasChildren())
             {
                 PathTreeNodeData node = new PathTreeNodeData(suggestion);

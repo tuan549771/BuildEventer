@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Objects>
+  <Parameters>
+    <Parameter>$(Project) or *.dll and so on</Parameter>
+    <Parameter>$(Project)</Parameter>
+    <Parameter>$(Project) or *.dll and so</Parameter>
+  </Parameters>
+  <Actions>
+    <Copy>
+      <Destination>ABC</Destination>
+      <Sources>
+        <Source>ABC\goals - Copy (2).pdf</Source>
+        <Source>ABC\goals - Copy (5).pdf</Source>
+      </Sources>
+    </Copy>
+    <Copy>
+      <Destination>BindingText</Destination>
+      <Sources>
+        <Source>BindingText\BindingText</Source>
+        <Source>DEF\New Text Document - Copy.txt</Source>
+      </Sources>
+    </Copy>
+    <Copy>
+      <Destination>DEF</Destination>
+      <Sources>
+        <Source>DEF\New Text Document - Copy (2).txt</Source>
+        <Source>DEF\New Text Document - Copy.txt</Source>
+      </Sources>
+    </Copy>
+  </Actions>
+  <Filters>
+    <Filter>$(Project) or *.dll and so on</Filter>
+    <Filter>$(Project) </Filter>
+  </Filters>
+  <BranchExplorers>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder\ABC</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder\ABC\$(Project) or *.dll and so on</Parent>
+      <Sub>$(Project) </Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder\ABC\$(Project) or *.dll and so on</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\New folder\ABC\$(Project) or *.dll and so on</Parent>
+      <Sub>$(Project) or *.dll and so</Sub>
+    </BranchExplorer>
+  </BranchExplorers>
+</Objects>

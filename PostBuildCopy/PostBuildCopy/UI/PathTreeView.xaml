@@ -25,6 +25,7 @@
                 <EventSetter Event="TreeViewItem.Drop" Handler="TreeDrop"/>
                 <EventSetter Event="TreeViewItem.MouseMove" Handler="TreeMouseMove"/>
                 <EventSetter Event="TreeViewItem.MouseRightButtonDown" Handler="MouseRight"/>
+                <Setter Property="IsExpanded" Value="False"></Setter>
             </Style>
         </TreeView.ItemContainerStyle>
         <TreeView.ContextMenu>

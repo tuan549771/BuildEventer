@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Windows;
 
 namespace PostBuildCopy.Classes
 {
@@ -7,7 +9,8 @@ namespace PostBuildCopy.Classes
     {
         public static PathTreeNodeData GetTreeNodeData()
         {
-            string currentDirectory = @"C:\Users\Dell\Desktop\New folder";//Directory.GetCurrentDirectory();
+            //string currentDirectory = Directory.GetCurrentDirectory();
+            string currentDirectory = @"C:\Users\Dell\Desktop\New folder";
             PathTreeNodeData root = new PathTreeNodeData(currentDirectory);
             GetTreeNode(currentDirectory, root);
             return root;
@@ -17,11 +20,14 @@ namespace PostBuildCopy.Classes
         {
             if (Directory.Exists(iPath))
             {
-                string[] dirs = Directory.GetDirectories(iPath);
-                string[] files = Directory.GetFiles(iPath);
-                GetFileSystemIntoTreeNode(dirs, iNode);
-                GetFileSystemIntoTreeNode(files, iNode);
-
+                try
+                {
+                    string[] dirs = Directory.GetDirectories(iPath);
+                    string[] files = Directory.GetFiles(iPath);
+                    GetFileSystemIntoTreeNode(dirs, iNode);
+                    GetFileSystemIntoTreeNode(files, iNode);
+                }
+                catch (Exception) {} //the reason try catch here is have some file denied access
             }
             GetBranchsExplorersIntoTreeNode(iNode);
         }

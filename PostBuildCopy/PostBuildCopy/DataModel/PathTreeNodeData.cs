@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows;
 
 namespace PostBuildCopy.Classes
@@ -72,10 +73,12 @@ namespace PostBuildCopy.Classes
 
         public string GetRelativePath(PathTreeNodeData iNode)
         {
-            string currentDirectory = @"C:\Users\Dell\Desktop\New folder\";//Directory.GetCurrentDirectory();
+            string currentDirectory = @"C:\Users\Dell\Desktop\New folder\";
+            //string currentDirectory = Directory.GetCurrentDirectory();
             if ("\\" == currentDirectory[currentDirectory.Length - 1].ToString())
                 currentDirectory = currentDirectory.Substring(0, currentDirectory.Length - 1);
             string fullPath = GetFullPath(iNode);
+            fullPath = fullPath.Replace("\\\\", "\\");
             string relativePath = fullPath.Substring(currentDirectory.Length + 1);
             return relativePath;
         }

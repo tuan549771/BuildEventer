@@ -55,6 +55,22 @@ namespace PostBuildCopy.UI
                 OnDeletePath();
         }
 
+        public int ItemsCount
+        {
+            get { return lbPath.Items.Count; }
+        }
+
+        public int SelectedIndex
+        {
+            get { return lbPath.SelectedIndex; }
+            set { lbPath.SelectedIndex = value; }
+        }
+
+        public IEnumerable ItemSource
+        {
+            set { lbPath.ItemsSource = value; }
+        }
+
         public static  DependencyProperty AllowDeletePathProperty =
             DependencyProperty.RegisterAttached("AllowDeletePathListBox", typeof(Boolean), typeof(PathTreeView),
             new FrameworkPropertyMetadata(false));
@@ -64,26 +80,5 @@ namespace PostBuildCopy.UI
             get { return (Boolean)GetValue(AllowDeletePathProperty); }
             set { SetValue(AllowDeletePathProperty, value); }
         }
-
-
-        public static DependencyProperty SelectedIndexProperty =
-            DependencyProperty.RegisterAttached("SelectedIndexLB", typeof(int), typeof(PathTreeView),
-            new FrameworkPropertyMetadata(-1, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-
-        public int SelectedIndexLB
-        {
-            get { return (int)GetValue(SelectedIndexProperty); }
-            set { SetValue(SelectedIndexProperty, value); }
-        }
-
-        public static DependencyProperty ItemSourceLBProperty =
-            DependencyProperty.RegisterAttached("ItemSourceLB", typeof(IEnumerable), typeof(PathTreeView));
-
-        public IEnumerable ItemSourceLB
-        {
-            get { return (IEnumerable)GetValue(ItemSourceLBProperty); }
-            set { SetValue(ItemSourceLBProperty, value); }
-        }
-        
     }
 }

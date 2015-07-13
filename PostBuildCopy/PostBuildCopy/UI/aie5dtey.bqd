@@ -1,5 +1,5 @@
 ﻿using PostBuildCopy.Classes;
-using System.Collections;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,6 +15,7 @@ namespace PostBuildCopy.UI
         {
             InitializeComponent();
             Initialize();
+
         }
 
         public void Initialize()
@@ -22,33 +23,6 @@ namespace PostBuildCopy.UI
             UCDestination.OnPathDrop += UCDestination_OnPathDrop;
             UCDestination.OnDeletePath += UCDestination_OnDeletePath;
             UCDestination.OnSelectedPath += UCDestination_OnSelectedPath;
-        }
-
-        private void UCDestination_OnSelectedPath()
-        {
-            indexDest = UCDestination.SelectedIndex;
-            LoadItemListBox(indexDest, itemTemp);
-        }
-
-        public int SelectedIndex
-        {
-            get { return UCDestination.SelectedIndex; }
-            set { UCDestination.SelectedIndex = value; }
-        }
-
-        public IEnumerable ItemSource
-        {
-            set { UCDestination.ItemSource = value; }
-        }
-
-        // loading listbox using delegate
-        public void LoadItemListBox(int index, delegateLoadItemListBox item)
-        {
-            if (null != item)
-            {
-                item(index);
-                itemTemp = item;
-            }
         }
 
         private void UCDestination_OnPathDrop(PathTreeNodeData iNodeDropped)
@@ -61,8 +35,14 @@ namespace PostBuildCopy.UI
                 if (true == CheckFileExist(absolutePath))
                     return;
                 ActionManager.actions.Add(new CopySourcesToDestination(PathData));
-                UCDestination.ItemSource = ActionManager.GetListDestinationOfActionManager();
+                UCDestination.SetData(ActionManager.GetListDestinationOfActionManager());
             }
+        }
+
+        private void UCDestination_OnSelectedPath()
+        {
+            indexDest = UCDestination.lbPath.SelectedIndex;
+            LoadItemListBox(indexDest, itemTemp);
         }
 
         private void UCDestination_OnDeletePath()
@@ -70,8 +50,8 @@ namespace PostBuildCopy.UI
             if (indexDest != -1)
             {
                 ActionManager.actions.RemoveAt(indexDest);
-                UCDestination.ItemSource = ActionManager.GetListDestinationOfActionManager();
-                UCDestination.SelectedIndex = UCDestination.ItemsCount - 1;
+                UCDestination.lbPath.ItemsSource = ActionManager.GetListDestinationOfActionManager();
+                UCDestination.lbPath.SelectedIndex = UCDestination.lbPath.Items.Count - 1;
             }
         }
 
@@ -79,10 +59,20 @@ namespace PostBuildCopy.UI
         {
             if (File.Exists(iAbsolutePath))
             {
-                MessageBox.Show("You should be choice a folder for destination.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("You should be choice a folder for destination.", "My App", MessageBoxButton.OK, MessageBoxImage.Information);
                 return true;
             }
             return false;
+        }
+
+        // loading listbox using delegate
+        public void LoadItemListBox(int index, delegateLoadItemListBox item)
+        {
+            if (null != item)
+            {
+                item(index);
+                itemTemp = item;
+            }
         }
 
         public static int indexDest = -1;

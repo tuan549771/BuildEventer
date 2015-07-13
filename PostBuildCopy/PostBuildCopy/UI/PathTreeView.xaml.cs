@@ -50,7 +50,7 @@ namespace PostBuildCopy.UI
                 m_Root[0] = iNodeRoot;
             }
             treeView.ItemsSource = m_Root;
-            
+
             //foreach (var item in treeView.Items)
             //{
             //    DependencyObject dObject = treeView.ItemContainerGenerator.ContainerFromItem(item);

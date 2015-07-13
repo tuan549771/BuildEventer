@@ -23,6 +23,12 @@ namespace PostBuildCopy.UI
             UCSources.OnDeletePath += UCSources_OnDeletePath;
         }
 
+        public int SelectedIndex
+        {
+            get { return UCSources.SelectedIndex; }
+            set { UCSources.SelectedIndex = value; }
+        }
+
         public void LoadListBoxItem(int index, delegateLoadItemListBox item)
         {
             item(index);
@@ -31,9 +37,9 @@ namespace PostBuildCopy.UI
         public void LoadListBoxItemSources1(int index)
         {
             if (-1 != index)
-                UCSources.SetData((ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources);
+                UCSources.ItemSource = (ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources;
             else
-                UCSources.SetData(null);
+                UCSources.ItemSource = null;
         }
 
         private void UCSources_OnPathDrop(PathTreeNodeData iNodeDropped)
@@ -46,13 +52,14 @@ namespace PostBuildCopy.UI
                 string relativePath = iNodeDropped.GetRelativePath(iNodeDropped);
                 PathDataModel PathData = new PathDataModel(relativePath);
                 (ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources.Add(PathData);
-                UCSources.SetData((ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources);
+                UCSources.ItemSource = (ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources;
+
             }
         }
 
         private void UCSources_OnDeletePath()
         {
-            int indexSource = UCSources.lbPath.SelectedIndex;
+            int indexSource = UCSources.SelectedIndex;
             if (Destinations.indexDest != -1 && indexSource != -1)// 0 <= (indexDest * indexSource)
                 (ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources.RemoveAt(indexSource);
         }
@@ -66,5 +73,7 @@ namespace PostBuildCopy.UI
             }
             return true;
         }
+
+
     }
 }

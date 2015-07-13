@@ -19,12 +19,13 @@ namespace PostBuildCopy.UI
             Initialize();
             treeViewExplorer.GetChildren = GetTreeNodeChildren;
             treeViewExplorer.OnNodeDrop += treeView_OnNodeDrop;
-            
+
         }
 
         public void Initialize()
         {
             treeViewExplorer.SetData(ExplorerModel.GetTreeNodeData());
+
         }
 
 

@@ -52,12 +52,12 @@ namespace PostBuildCopy.Widowns
                 listBoxDestinations.SelectedIndex = 0;
                 Explorer.Initialize();
             }
-            catch (Exception ex) { MessageBox.Show("Configuration xml:" + ex.Message, "Information"); }
+            catch (Exception ex) { MessageBox.Show("Load configuration xml:" + ex.Message, "Information"); }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            PathTreeNodeData parameterNode = Parameter.GetData();
+            PathTreeNodeData parameterNode = TreeParameter.GetData();
             PathTreeNodeData filterNode = Filter.GetData();
             List<CouplePath> couplePaths = BranchsExplorer.GetBranchsExplorers();
             xmlGenerator.GenerateXml(ActionManager.actions, parameterNode, filterNode, couplePaths);

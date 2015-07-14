@@ -1,69 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Objects>
   <Parameters>
-    <Parameter>$(Project)1</Parameter>
-    <Parameter>$(Project)3</Parameter>
+    <Parameter>$(Project) or *.dll and so on</Parameter>
   </Parameters>
   <Actions>
     <Copy>
-      <Destination>ABC</Destination>
+      <Destination>BindingText\BindingText</Destination>
       <Sources>
-        <Source>ABC\goals - Copy (2).pdf</Source>
-        <Source>ABC\goals - Copy (3).pdf</Source>
-        <Source>ABC\$(Project)1\$(Project)2\$(Project)3\$(Project)4</Source>
-      </Sources>
-    </Copy>
-    <Copy>
-      <Destination>BindingText</Destination>
-      <Sources>
-        <Source>$(Project)1\$(Project)4</Source>
-        <Source>$(Project)1\$(Project)2</Source>
-        <Source>$(Project)1\$(Project)3</Source>
-      </Sources>
-    </Copy>
-    <Copy>
-      <Destination>DEF</Destination>
-      <Sources>
-        <Source>DEF\New Text Document - Copy (2).txt</Source>
+        <Source>BindingText\BindingText.sln</Source>
+        <Source>BindingText\BindingText.v12.suo\$(Project) or *.dll and so on</Source>
       </Sources>
     </Copy>
   </Actions>
   <Filters>
-    <Filter>$(Project)2</Filter>
-    <Filter>$(Project)4</Filter>
+    <Filter>$(Project) or *.dll and so on</Filter>
   </Filters>
   <BranchExplorers>
     <BranchExplorer>
-      <Parent>C:\Users\Dell\Desktop\New folder\ABC</Parent>
-      <Sub>$(Project)1</Sub>
-    </BranchExplorer>
-    <BranchExplorer>
-      <Parent>C:\Users\Dell\Desktop\New folder\ABC\$(Project)1</Parent>
-      <Sub>$(Project)2</Sub>
-    </BranchExplorer>
-    <BranchExplorer>
-      <Parent>C:\Users\Dell\Desktop\New folder\ABC\$(Project)1\$(Project)2</Parent>
-      <Sub>$(Project)3</Sub>
-    </BranchExplorer>
-    <BranchExplorer>
-      <Parent>C:\Users\Dell\Desktop\New folder\ABC\$(Project)1\$(Project)2\$(Project)3</Parent>
-      <Sub>$(Project)4</Sub>
-    </BranchExplorer>
-    <BranchExplorer>
       <Parent>C:\Users\Dell\Desktop\New folder</Parent>
-      <Sub>$(Project)1</Sub>
+      <Sub>$(Project) or *.dll and so on</Sub>
     </BranchExplorer>
     <BranchExplorer>
-      <Parent>C:\Users\Dell\Desktop\New folder\$(Project)1</Parent>
-      <Sub>$(Project)2</Sub>
+      <Parent>C:\Users\Dell\Desktop\New folder\$(Project) or *.dll and so on</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
     </BranchExplorer>
     <BranchExplorer>
-      <Parent>C:\Users\Dell\Desktop\New folder\$(Project)1</Parent>
-      <Sub>$(Project)3</Sub>
+      <Parent>C:\Users\Dell\Desktop\New folder\BindingText\BindingText.v12.suo</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
     </BranchExplorer>
     <BranchExplorer>
-      <Parent>C:\Users\Dell\Desktop\New folder\$(Project)1</Parent>
-      <Sub>$(Project)4</Sub>
+      <Parent>C:\Users\Dell\Desktop\New folder\BindingText\BindingText.v12.suo\$(Project) or *.dll and so on</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
     </BranchExplorer>
   </BranchExplorers>
 </Objects>

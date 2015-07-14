@@ -6,15 +6,14 @@ using System.Windows.Media;
 namespace PostBuildCopy.UI
 {
     /// <summary>
-    /// Interaction logic for Filter.xaml
+    /// Interaction logic for Parameter.xaml
     /// </summary>
-    public partial class Filter : UserControl
+    public partial class TreeParameter : UserControl
     {
-        private ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
-        private string strRoot = "Filters";
-        private string suggestion = "Right Click to add Filters\nand you may drag them\ninto Explorer";
+        private string strRoot = "Parameters";
+        private string suggestion = "Right Click to add parameters\nand you may drag them\ninto Explorer";
         private static PathTreeNodeData root;
-        public Filter()
+        public TreeParameter()
         {
             InitializeComponent();
             InitializeData();
@@ -27,14 +26,14 @@ namespace PostBuildCopy.UI
             PathTreeNodeData suggestionNode = new PathTreeNodeData(suggestion);
             root.AddChild(suggestionNode);
             root.IsExpanded = true;
-            UCFilter.SetData(root);
+            UCParameter.SetData(root);
         }
 
         public void SetDataRoot(PathTreeNodeData iRoot)
         {
             root = iRoot;
             root.IsExpanded = true;
-            UCFilter.SetData(root);
+            UCParameter.SetData(root);
         }
 
         public static PathTreeNodeData GetData()
@@ -44,36 +43,31 @@ namespace PostBuildCopy.UI
 
         private void InitializeEvent()
         {
-            UCFilter.OnPathCreate +=UCFilter_OnPathCreate;
-            UCFilter.OnPathDelete +=UCFilter_OnPathDelete;
-            UCFilter.OnSetAllowNodeDrop+=UCFilter_OnSetAllowNodeDrop;
+            UCParameter.OnPathCreate += UCParameter_OnPathCreate;
+            UCParameter.OnPathDelete += UCParameter_OnPathDelete;
+            UCParameter.OnSetAllowNodeDrop+=UCParameter_OnSetAllowNodeDrop;
         }
 
-        private PathTreeNodeData UCFilter_OnSetAllowNodeDrop(PathTreeNodeData iNode)
+        private PathTreeNodeData UCParameter_OnSetAllowNodeDrop(PathTreeNodeData iNode)
         {
             iNode.AllowDropNode = false;
-            iNode.ForegroundBinding = Brushes.Magenta;
             return iNode;
         }
 
-
-        private void UCFilter_OnPathCreate(PathTreeNodeData iNode, string iPathChildNode)
+        private void UCParameter_OnPathCreate(PathTreeNodeData iNodeParent, string iPathChildNode)
         {
             // We will add node into the root node
-            // and not add any node others
             // Thus, iNodeParent no use here
-            // We will use the root node that path name is Filters
-
+            // We will use the root node that path name is Parameters
             PathTreeNodeData node = new PathTreeNodeData(iPathChildNode);
             root.AddChild(node);
-
             if (true == root.ContainsChildPath(suggestion))
-                UCFilter_OnPathDelete(root.Children[0]);
+                UCParameter_OnPathDelete(root.Children[0]);
         }
 
-        private void UCFilter_OnPathDelete(PathTreeNodeData iNode)
+        private void UCParameter_OnPathDelete(PathTreeNodeData iNode)
         {
-            PathTreeNodeData parent = iNode.Parent;
+            PathTreeNodeData parent = parent = iNode.Parent;
             parent.DeleteChild(iNode);
             // Add suggestion if no have suggestion node
             if (false == parent.HasChildren())
@@ -84,3 +78,5 @@ namespace PostBuildCopy.UI
         }
     }
 }
+
+

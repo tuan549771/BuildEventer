@@ -26,6 +26,10 @@ namespace PostBuildCopy.UI
         public delegate PathTreeNodeData HandleOnSetAllowNodeDrop(PathTreeNodeData iNode);
         public event HandleOnSetAllowNodeDrop OnSetAllowNodeDrop;
 
+        // On Property Node Drop
+        public delegate PathTreeNodeData HandleOnSetPropertyNodeDrop(PathTreeNodeData iNode);
+        public event HandleOnSetPropertyNodeDrop OnSetPropertyNodeDrop;
+
         // On Node Drop
         public delegate void HandleOnNodeDrop(PathTreeNodeData iNodeSource, PathTreeNodeData iNodeTarget);
         public event HandleOnNodeDrop OnNodeDrop;
@@ -102,7 +106,8 @@ namespace PostBuildCopy.UI
             if (container != null)
             {
                 PathTreeNodeData sourceNode = (PathTreeNodeData)e.Data.GetData(typeof(PathTreeNodeData));
-                sourceNode.AllowDropNode = true;
+                if (null != OnSetPropertyNodeDrop)
+                    sourceNode = OnSetPropertyNodeDrop(sourceNode);
                 PathTreeNodeData targetNode = (PathTreeNodeData)container.Header;
                 if (null != OnNodeDrop)
                     OnNodeDrop(sourceNode, targetNode);
@@ -116,10 +121,6 @@ namespace PostBuildCopy.UI
             m_NodeSeleted = (PathTreeNodeData)item.Header;
             if (null != item)
                 item.IsSelected = true;
-
-            //m_NodeSeleted = (PathTreeNodeData)e.Source;
-            //if (null != m_NodeSeleted)
-            //    m_NodeSeleted.IsSelectedBinding = true;
         }
 
         // Show a message box to get a new path
@@ -169,7 +170,7 @@ namespace PostBuildCopy.UI
                 m_FirstMouseDown = e.GetPosition(treeView);
         }
 
-        #region Dependency property
+        #region Dependency property for PathTreeView
 
         public static readonly DependencyProperty AllowCreateNewPathProperty =
             DependencyProperty.RegisterAttached("AllowCreateNewPath", typeof(Boolean), typeof(PathTreeView),

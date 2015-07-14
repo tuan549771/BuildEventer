@@ -37,10 +37,6 @@ D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCop
 D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.csprojResolveAssemblyReference.cache
 D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\Explorer.g.cs
 D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\Explorer.baml
-D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\Filter.g.cs
-D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\Parameter.g.cs
-D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\Filter.baml
-D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\Parameter.baml
 C:\Users\Dell\Desktop\impor\PostBuildCopy\PostBuildCopy\bin\Debug\PostBuildCopy.exe.config
 C:\Users\Dell\Desktop\impor\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.exe
 C:\Users\Dell\Desktop\impor\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.pdb
@@ -68,7 +64,11 @@ C:\Users\Dell\Desktop\impor\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.
 C:\Users\Dell\Desktop\impor\PostBuildCopy\PostBuildCopy\obj\Debug\PostBuildCopy.csproj.GenerateResource.Cache
 D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\PathListBox.baml
 D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\PathListBox.g.cs
-D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\Destinations.baml
-D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\Destinations.g.cs
-D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\Sources.g.cs
-D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\Sources.baml
+D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeParameter.g.cs
+D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeParameter.baml
+D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeFilter.g.cs
+D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeFilter.baml
+D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\ListBoxDestinations.g.cs
+D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\ListBoxSources.g.cs
+D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\ListBoxDestinations.baml
+D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\ListBoxSources.baml

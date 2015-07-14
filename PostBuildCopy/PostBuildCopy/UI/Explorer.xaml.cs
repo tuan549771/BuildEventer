@@ -24,6 +24,14 @@ namespace PostBuildCopy.UI
             treeViewExplorer.GetChildren = GetTreeNodeChildren;
             treeViewExplorer.OnNodeDrop += treeView_OnNodeDrop;
             treeViewExplorer.OnPathRefresh +=treeViewExplorer_OnPathRefresh;
+            treeViewExplorer.OnSetPropertyNodeDrop+=treeViewExplorer_OnSetPropertyNodeDrop;
+        }
+
+        private PathTreeNodeData treeViewExplorer_OnSetPropertyNodeDrop(PathTreeNodeData iNode)
+        {
+            iNode.AllowDropNode = true;
+            iNode.ForegroundBinding = Brushes.Magenta;
+            return iNode;
         }
 
         public void Initialize()

@@ -19,6 +19,20 @@ namespace PostBuildCopy.DataModel
             }
         }
 
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get { return this.isSelected; }
+            set
+            {
+                if (value != this.isSelected)
+                {
+                    this.isSelected = value;
+                    NotifyPropertyChanged("IsSelected");
+                }
+            }
+        }
+
         private bool allowDropNode = true;
         public bool AllowDropNode
         {

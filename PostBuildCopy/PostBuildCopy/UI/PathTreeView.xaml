@@ -13,6 +13,7 @@
               TreeViewItem.MouseDown="TreeMouseDown"
               FontSize="14">
         <TreeView.ItemTemplate>
+            
             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                 <TextBlock Text="{Binding Path}"/>
             </HierarchicalDataTemplate>
@@ -25,7 +26,7 @@
                 <EventSetter Event="TreeViewItem.MouseRightButtonDown" Handler="TreeMouseRight"/>
                 <Setter Property="IsExpanded" Value="{Binding IsExpanded}"/>
                 <Setter Property="Foreground" Value="{Binding ForegroundBinding}"/>
-                <Setter Property="IsSelected" Value="{Binding IsSelectedBinding}"/>
+                <!--<Setter Property="IsSelected" Value="{Binding IsSelectedBinding}"/>-->
             </Style>
         </TreeView.ItemContainerStyle>
         <TreeView.ContextMenu>

@@ -64,17 +64,17 @@
     <Compile Include="DataModel\ExplorerModel.cs" />
     <Compile Include="DataModel\PathTreeNodeData.cs" />
     <Compile Include="DataModel\TreeViewItemBase.cs" />
-    <Compile Include="UI\Destinations.xaml.cs">
-      <DependentUpon>Destinations.xaml</DependentUpon>
+    <Compile Include="UI\ListBoxDestinations.xaml.cs">
+      <DependentUpon>ListBoxDestinations.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Explorer.xaml.cs">
       <DependentUpon>Explorer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Filter.xaml.cs">
-      <DependentUpon>Filter.xaml</DependentUpon>
+    <Compile Include="UI\TreeFilter.xaml.cs">
+      <DependentUpon>TreeFilter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Parameter.xaml.cs">
-      <DependentUpon>Parameter.xaml</DependentUpon>
+    <Compile Include="UI\TreeParameter.xaml.cs">
+      <DependentUpon>TreeParameter.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\PathListBox.xaml.cs">
       <DependentUpon>PathListBox.xaml</DependentUpon>
@@ -82,8 +82,8 @@
     <Compile Include="UI\PathTreeView.xaml.cs">
       <DependentUpon>PathTreeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Sources.xaml.cs">
-      <DependentUpon>Sources.xaml</DependentUpon>
+    <Compile Include="UI\ListBoxSources.xaml.cs">
+      <DependentUpon>ListBoxSources.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windowns\InputPathDialog.xaml.cs">
       <DependentUpon>InputPathDialog.xaml</DependentUpon>
@@ -95,7 +95,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UI\Destinations.xaml">
+    <Page Include="UI\ListBoxDestinations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -103,11 +103,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Filter.xaml">
+    <Page Include="UI\TreeFilter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Parameter.xaml">
+    <Page Include="UI\TreeParameter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,7 +119,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Sources.xaml">
+    <Page Include="UI\ListBoxSources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

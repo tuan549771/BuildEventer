@@ -38,7 +38,7 @@ namespace PostBuildCopy.Classes
             {
                 string path = String.Copy(iChild.Path);
                 PathTreeNodeData child = new PathTreeNodeData(path, this);
-                child.ForegroundBinding = iChild.ForegroundBinding.Clone();
+                child.ForegroundBinding = iChild.ForegroundBinding.CloneCurrentValue();
                 this.Children.Add(child);
                 return;
             }
@@ -51,7 +51,7 @@ namespace PostBuildCopy.Classes
             {
                 string path = String.Copy(iChild.Path);
                 PathTreeNodeData child = new PathTreeNodeData(path, this);
-                child.ForegroundBinding = iChild.ForegroundBinding.Clone();
+                child.ForegroundBinding = iChild.ForegroundBinding.CloneCurrentValue();
                 this.Children.Add(child);
                 return;
             }
@@ -76,8 +76,8 @@ namespace PostBuildCopy.Classes
 
         public string GetRelativePath(PathTreeNodeData iNode)
         {
-            //string currentDirectory = @"C:\Users\Dell\Desktop\New folder\";
-            string currentDirectory = Directory.GetCurrentDirectory();
+            string currentDirectory = @"C:\Users\Dell\Desktop\New folder\";
+            //string currentDirectory = Directory.GetCurrentDirectory();
             if ("\\" == currentDirectory[currentDirectory.Length - 1].ToString())
                 currentDirectory = currentDirectory.Substring(0, currentDirectory.Length - 1);
             string fullPath = GetFullPath(iNode);

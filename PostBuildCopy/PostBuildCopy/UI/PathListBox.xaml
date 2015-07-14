@@ -8,10 +8,7 @@
     <Grid>
         <ListBox x:Name="lbPath" FontSize="14"
                  Drop="DropPath" 
-                 SelectedIndex="{Binding SelectedIndexLB}"
-                 ItemsSource="{Binding ItemSourceLB}"
                  SelectionChanged="SelectedPath">
-
             <ListBox.ItemTemplate>
                 <HierarchicalDataTemplate>
                     <WrapPanel>
@@ -19,14 +16,12 @@
                     </WrapPanel>
                 </HierarchicalDataTemplate>
             </ListBox.ItemTemplate>
-            
-            
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="AliceBlue"/>
- 
+
                         </Trigger>
                     </Style.Triggers>
                 </Style>

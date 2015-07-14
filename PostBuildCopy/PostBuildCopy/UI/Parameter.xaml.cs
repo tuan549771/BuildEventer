@@ -1,6 +1,7 @@
 ﻿using PostBuildCopy.Classes;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace PostBuildCopy.UI
 {
@@ -24,12 +25,14 @@ namespace PostBuildCopy.UI
             root = new PathTreeNodeData(strRoot);
             PathTreeNodeData suggestionNode = new PathTreeNodeData(suggestion);
             root.AddChild(suggestionNode);
+            root.IsExpanded = true;
             UCParameter.SetData(root);
         }
 
         public void SetDataRoot(PathTreeNodeData iRoot)
         {
             root = iRoot;
+            root.IsExpanded = true;
             UCParameter.SetData(root);
         }
 
@@ -42,6 +45,14 @@ namespace PostBuildCopy.UI
         {
             UCParameter.OnPathCreate += UCParameter_OnPathCreate;
             UCParameter.OnPathDelete += UCParameter_OnPathDelete;
+            UCParameter.OnSetAllowNodeDrop+=UCParameter_OnSetAllowNodeDrop;
+        }
+
+        private PathTreeNodeData UCParameter_OnSetAllowNodeDrop(PathTreeNodeData iNode)
+        {
+            iNode.AllowDropNode = false;
+            iNode.ForegroundBinding = Brushes.Magenta;
+            return iNode;
         }
 
         private void UCParameter_OnPathCreate(PathTreeNodeData iNodeParent, string iPathChildNode)

@@ -7,7 +7,8 @@
              mc:Ignorable="d">
     <Grid>
         <local:PathTreeView x:Name="treeViewExplorer"
-                            AllowDropTree="True">
+                            AllowRefresh="True"
+                            AllowDrop="True">
         </local:PathTreeView>
     </Grid>
 </UserControl>

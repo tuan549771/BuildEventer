@@ -52,7 +52,7 @@ namespace PostBuildCopy.Widowns
                 listBoxDestinations.SelectedIndex = 0;
                 Explorer.Initialize();
             }
-            catch (Exception) { MessageBox.Show("Configuration xml not macth", "Information"); }
+            catch (Exception ex) { MessageBox.Show("Configuration xml:" + ex.Message, "Information"); }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

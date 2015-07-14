@@ -38,6 +38,8 @@ namespace PostBuildCopy.UI
         private void DropPath(object sender, DragEventArgs e)
         {
             PathTreeNodeData objDrop = (PathTreeNodeData)e.Data.GetData(typeof(PathTreeNodeData));
+            if (false == objDrop.AllowDropNode)
+                return;
             if (null != OnPathDrop)
                 OnPathDrop(objDrop);
             lbPath.SelectedIndex = lbPath.Items.Count - 1;
@@ -71,7 +73,7 @@ namespace PostBuildCopy.UI
             set { lbPath.ItemsSource = value; }
         }
 
-        public static  DependencyProperty AllowDeletePathProperty =
+        public static DependencyProperty AllowDeletePathProperty =
             DependencyProperty.RegisterAttached("AllowDeletePathListBox", typeof(Boolean), typeof(PathTreeView),
             new FrameworkPropertyMetadata(false));
 

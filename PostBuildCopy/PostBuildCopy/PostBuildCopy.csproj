@@ -62,9 +62,8 @@
     <Compile Include="Classes\XmlGenerator.cs" />
     <Compile Include="Classes\XmlLoader.cs" />
     <Compile Include="DataModel\ExplorerModel.cs" />
-    <Compile Include="DataModel\FilterModel.cs" />
-    <Compile Include="DataModel\ParameterModel.cs" />
     <Compile Include="DataModel\PathTreeNodeData.cs" />
+    <Compile Include="DataModel\TreeViewItemBase.cs" />
     <Compile Include="UI\Destinations.xaml.cs">
       <DependentUpon>Destinations.xaml</DependentUpon>
     </Compile>

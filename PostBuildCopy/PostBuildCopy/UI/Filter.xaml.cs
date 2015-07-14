@@ -1,6 +1,7 @@
 ﻿using PostBuildCopy.Classes;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace PostBuildCopy.UI
 {
@@ -9,6 +10,7 @@ namespace PostBuildCopy.UI
     /// </summary>
     public partial class Filter : UserControl
     {
+        private ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
         private string strRoot = "Filters";
         private string suggestion = "Right Click to add Filters\nand you may drag them\ninto Explorer";
         private static PathTreeNodeData root;
@@ -24,12 +26,14 @@ namespace PostBuildCopy.UI
             root = new PathTreeNodeData(strRoot);
             PathTreeNodeData suggestionNode = new PathTreeNodeData(suggestion);
             root.AddChild(suggestionNode);
+            root.IsExpanded = true;
             UCFilter.SetData(root);
         }
 
         public void SetDataRoot(PathTreeNodeData iRoot)
         {
             root = iRoot;
+            root.IsExpanded = true;
             UCFilter.SetData(root);
         }
 
@@ -42,6 +46,14 @@ namespace PostBuildCopy.UI
         {
             UCFilter.OnPathCreate +=UCFilter_OnPathCreate;
             UCFilter.OnPathDelete +=UCFilter_OnPathDelete;
+            UCFilter.OnSetAllowNodeDrop+=UCFilter_OnSetAllowNodeDrop;
+        }
+
+        private PathTreeNodeData UCFilter_OnSetAllowNodeDrop(PathTreeNodeData iNode)
+        {
+            iNode.AllowDropNode = false;
+            iNode.ForegroundBinding = Brushes.Magenta;
+            return iNode;
         }
 
 
@@ -54,6 +66,7 @@ namespace PostBuildCopy.UI
 
             PathTreeNodeData node = new PathTreeNodeData(iPathChildNode);
             root.AddChild(node);
+
             if (true == root.ContainsChildPath(suggestion))
                 UCFilter_OnPathDelete(root.Children[0]);
         }

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using PostBuildCopy.DataModel;
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 
 namespace PostBuildCopy.Classes
 {
-    public class PathTreeNodeData
+    public class PathTreeNodeData : TreeViewItemBase
     {
         public string Path { get; set; }
         public PathTreeNodeData Parent { get; set; }
@@ -37,18 +38,20 @@ namespace PostBuildCopy.Classes
             {
                 string path = String.Copy(iChild.Path);
                 PathTreeNodeData child = new PathTreeNodeData(path, this);
+                child.ForegroundBinding = iChild.ForegroundBinding.Clone();
                 this.Children.Add(child);
                 return;
             }
             MessageBox.Show("\"" + iChild.Path + "\"" + " has existed in " + "\"" + this.Path + "\"", "Information");
         }
 
-        public void AddChildNoMessageExsit(PathTreeNodeData iChild)
+        public void AddChildNoMessageExist(PathTreeNodeData iChild)
         {
             if (false == this.ContainsChildPath(iChild.Path))
             {
                 string path = String.Copy(iChild.Path);
                 PathTreeNodeData child = new PathTreeNodeData(path, this);
+                child.ForegroundBinding = iChild.ForegroundBinding.Clone();
                 this.Children.Add(child);
                 return;
             }
@@ -73,8 +76,8 @@ namespace PostBuildCopy.Classes
 
         public string GetRelativePath(PathTreeNodeData iNode)
         {
-            string currentDirectory = @"C:\Users\Dell\Desktop\New folder\";
-            //string currentDirectory = Directory.GetCurrentDirectory();
+            //string currentDirectory = @"C:\Users\Dell\Desktop\New folder\";
+            string currentDirectory = Directory.GetCurrentDirectory();
             if ("\\" == currentDirectory[currentDirectory.Length - 1].ToString())
                 currentDirectory = currentDirectory.Substring(0, currentDirectory.Length - 1);
             string fullPath = GetFullPath(iNode);

@@ -1,7 +1,9 @@
 ﻿using PostBuildCopy.Classes;
 using PostBuildCopy.Widowns;
 using System;
+using System.Collections;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,11 +15,16 @@ namespace PostBuildCopy.UI
     {
         // Member private
         private PathTreeNodeData m_NodeSeleted;
-        public ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
+        private Point m_FirstMouseDown;
+        private ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
 
         // On delegate Get Node Children
         public delegate void GetChildrenDelegate(PathTreeNodeData iNode);
         public GetChildrenDelegate GetChildren;
+
+        // On Allow Node Drop
+        public delegate PathTreeNodeData HandleOnSetAllowNodeDrop(PathTreeNodeData iNode);
+        public event HandleOnSetAllowNodeDrop OnSetAllowNodeDrop;
 
         // On Node Drop
         public delegate void HandleOnNodeDrop(PathTreeNodeData iNodeSource, PathTreeNodeData iNodeTarget);
@@ -31,6 +38,10 @@ namespace PostBuildCopy.UI
         public delegate void HandleOnPathDelete(PathTreeNodeData iNode);
         public event HandleOnPathDelete OnPathDelete;
 
+        // On Path Refresh
+        public delegate void HandleOnPathRefresh();
+        public event HandleOnPathRefresh OnPathRefresh;
+
         // Constructor
         public PathTreeView()
         {
@@ -41,43 +52,11 @@ namespace PostBuildCopy.UI
         // Set Data
         public void SetData(PathTreeNodeData iNodeRoot)
         {
-            if (0 == m_Root.Count)
-            {
-                m_Root.Add(iNodeRoot);
-            }
-            else
-            {
-                m_Root[0] = iNodeRoot;
-            }
+            m_Root.Add(iNodeRoot);
+            if (1 < m_Root.Count)
+                m_Root.RemoveAt(0);
             treeView.ItemsSource = m_Root;
-
-            //foreach (var item in treeView.Items)
-            //{
-            //    DependencyObject dObject = treeView.ItemContainerGenerator.ContainerFromItem(item);
-            //    CollapseTreeviewItems(((TreeViewItem)dObject));
-            //}
         }
-
-        //private void CollapseTreeviewItems(TreeViewItem Item)
-        //{
-        //    Item.IsExpanded = false;
-
-        //    foreach (var item in Item.Items)
-        //    {
-        //        DependencyObject dObject = treeView.ItemContainerGenerator.ContainerFromItem(item);
-
-        //        if (dObject != null)
-        //        {
-        //            ((TreeViewItem)dObject).IsExpanded = false;
-
-        //            if (((TreeViewItem)dObject).HasItems)
-        //            {
-        //                CollapseTreeviewItems(((TreeViewItem)dObject));
-        //            }
-        //        }
-        //    }
-        //}
-
 
         // Get the PathTreeNodeData object from node that expanded
         // With each child, call delegate GetChildren
@@ -85,7 +64,7 @@ namespace PostBuildCopy.UI
         {
             TreeViewItem item = e.OriginalSource as TreeViewItem;
             PathTreeNodeData data = (PathTreeNodeData)item.Header;
-            if (null != GetChildren)
+            if (null != GetChildren && null != data)
             {
                 for (int i = 0; i < data.Children.Count; ++i)
                 {
@@ -100,10 +79,16 @@ namespace PostBuildCopy.UI
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                PathTreeNodeData data = (PathTreeNodeData)treeView.SelectedItem;
-                if (null != data)
+                Point currentPosition = e.GetPosition(treeView);
+                if ((20.0 < Math.Abs(currentPosition.X - m_FirstMouseDown.X)) || (20.0 < Math.Abs(currentPosition.Y - m_FirstMouseDown.Y)))
                 {
-                    DragDrop.DoDragDrop(treeView, data, DragDropEffects.Copy);
+                    PathTreeNodeData data = (PathTreeNodeData)treeView.SelectedItem;
+                    if (null != OnSetAllowNodeDrop)
+                        data = OnSetAllowNodeDrop(data);
+                    if ((null != data) && (null != data.Parent))
+                    {
+                        DragDrop.DoDragDrop(treeView, data, DragDropEffects.Copy);
+                    }
                 }
             }
         }
@@ -117,6 +102,7 @@ namespace PostBuildCopy.UI
             if (container != null)
             {
                 PathTreeNodeData sourceNode = (PathTreeNodeData)e.Data.GetData(typeof(PathTreeNodeData));
+                sourceNode.AllowDropNode = true;
                 PathTreeNodeData targetNode = (PathTreeNodeData)container.Header;
                 if (null != OnNodeDrop)
                     OnNodeDrop(sourceNode, targetNode);
@@ -124,18 +110,22 @@ namespace PostBuildCopy.UI
         }
 
         // Used to selete a node via the right mouse  
-        private void MouseRight(object sender, MouseButtonEventArgs e)
+        private void TreeMouseRight(object sender, MouseButtonEventArgs e)
         {
             TreeViewItem item = GetNearestContainer(e.OriginalSource as UIElement);
             m_NodeSeleted = (PathTreeNodeData)item.Header;
             if (null != item)
                 item.IsSelected = true;
+
+            //m_NodeSeleted = (PathTreeNodeData)e.Source;
+            //if (null != m_NodeSeleted)
+            //    m_NodeSeleted.IsSelectedBinding = true;
         }
 
         // Show a message box to get a new path
         // Get PathTreeNodeData that selected in tree
         // Raise the OnPathCreate(PathTreeNodeData, a new path)
-        private void NewItem(object sender, RoutedEventArgs e)
+        private void TreeNewItem(object sender, RoutedEventArgs e)
         {
             string path = string.Empty;
             InputPathDialog inputDialog = new InputPathDialog();
@@ -146,13 +136,19 @@ namespace PostBuildCopy.UI
             }
         }
 
-        private void DeleteItem(object sender, RoutedEventArgs e)
+        private void TreeDeleteItem(object sender, RoutedEventArgs e)
         {
             InputPathDialog inputDialog = new InputPathDialog();
             if ((null != OnPathDelete) && (null != m_NodeSeleted))
             {
                 OnPathDelete(m_NodeSeleted);
             }
+        }
+
+        private void TreeRefreshItem(object sender, RoutedEventArgs e)
+        {
+            if (null != OnPathRefresh)
+                OnPathRefresh();
         }
 
         // Walk up the element tree to the nearest tree view item.
@@ -167,6 +163,11 @@ namespace PostBuildCopy.UI
             return container;
         }
 
+        private void TreeMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                m_FirstMouseDown = e.GetPosition(treeView);
+        }
 
         #region Dependency property
 
@@ -191,26 +192,16 @@ namespace PostBuildCopy.UI
             set { SetValue(AllowDeletePathProperty, value); }
         }
 
-        public static readonly DependencyProperty AllowDropTreeProperty =
-             DependencyProperty.RegisterAttached("AllowDropTree", typeof(Boolean), typeof(PathTreeView),
-             new FrameworkPropertyMetadata(false));
+        public static readonly DependencyProperty AllowRefreshProperty =
+            DependencyProperty.RegisterAttached("AllowRefresh", typeof(Boolean), typeof(PathTreeView),
+            new FrameworkPropertyMetadata(false));
 
-        public Boolean AllowDropTree
+        public Boolean AllowRefresh
         {
-            get { return (Boolean)GetValue(AllowDropTreeProperty); }
-            set { SetValue(AllowDropTreeProperty, value); }
+            get { return (Boolean)GetValue(AllowRefreshProperty); }
+            set { SetValue(AllowRefreshProperty, value); }
         }
 
-
-        //public static readonly DependencyProperty AllowExpandedProperty =
-        //     DependencyProperty.RegisterAttached("AllowExpanded", typeof(Boolean), typeof(PathTreeView),
-        //     new FrameworkPropertyMetadata(false));
-
-        //public Boolean AllowExpanded
-        //{
-        //    get { return (Boolean)GetValue(AllowExpandedProperty); }
-        //    set { SetValue(AllowExpandedProperty, value); }
-        //}
         #endregion
     }
 }

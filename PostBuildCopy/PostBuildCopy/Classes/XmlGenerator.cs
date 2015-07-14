@@ -19,7 +19,7 @@ namespace PostBuildCopy.Classes
         {
             if (0 == iListAction.Count)
             {
-                MessageBox.Show("There are no have any action");
+                MessageBox.Show("There are no have any action", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             if (false == InformationWarning(iListAction))

@@ -9,10 +9,8 @@
 
     <!-- FAMILY TREE -->
     <TreeView Name="treeView" 
-              AllowDrop="{Binding AllowDropTree}"
-              ItemsSource="{Binding AssignItemsSource}"
-              TreeViewItem.Expanded="TreeExpanded" 
-             
+              TreeViewItem.Expanded="TreeExpanded"
+              TreeViewItem.MouseDown="TreeMouseDown"
               FontSize="14">
         <TreeView.ItemTemplate>
             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
@@ -21,23 +19,29 @@
         </TreeView.ItemTemplate>
 
         <TreeView.ItemContainerStyle>
-            <Style TargetType="{x:Type TreeViewItem}">
+            <Style TargetType="TreeViewItem">
                 <EventSetter Event="TreeViewItem.Drop" Handler="TreeDrop"/>
                 <EventSetter Event="TreeViewItem.MouseMove" Handler="TreeMouseMove"/>
-                <EventSetter Event="TreeViewItem.MouseRightButtonDown" Handler="MouseRight"/>
-                <Setter Property="IsExpanded" Value="False"></Setter>
+                <EventSetter Event="TreeViewItem.MouseRightButtonDown" Handler="TreeMouseRight"/>
+                <Setter Property="IsExpanded" Value="{Binding IsExpanded}"/>
+                <Setter Property="Foreground" Value="{Binding ForegroundBinding}"/>
+                <Setter Property="IsSelected" Value="{Binding IsSelectedBinding}"/>
             </Style>
         </TreeView.ItemContainerStyle>
         <TreeView.ContextMenu>
             <ContextMenu>
                 <MenuItem Name="newItem" 
                           Header="New" 
-                          Click="NewItem" 
+                          Click="TreeNewItem" 
                           IsEnabled="{Binding AllowCreateNewPath}"/>
                 <MenuItem Name="deleteItem" 
                           Header="Delete" 
-                          Click="DeleteItem" 
+                          Click="TreeDeleteItem" 
                           IsEnabled="{Binding AllowDeletePath}"/>
+                <MenuItem Name="refreshItem"
+                          Header="Refresh"
+                          Click="TreeRefreshItem"
+                          IsEnabled="{Binding AllowRefresh}"/>
             </ContextMenu>
         </TreeView.ContextMenu>
     </TreeView>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
+using System.Windows.Media;
 
 namespace PostBuildCopy.Classes
 {
@@ -9,10 +11,11 @@ namespace PostBuildCopy.Classes
     {
         public static PathTreeNodeData GetTreeNodeData()
         {
-            //string currentDirectory = Directory.GetCurrentDirectory();
-            string currentDirectory = @"C:\Users\Dell\Desktop\New folder";
+            string currentDirectory = Directory.GetCurrentDirectory();
+            //string currentDirectory = @"C:\Users\Dell\Desktop\New folder";
             PathTreeNodeData root = new PathTreeNodeData(currentDirectory);
             GetTreeNode(currentDirectory, root);
+            root.IsExpanded = false;
             return root;
         }
 
@@ -27,7 +30,7 @@ namespace PostBuildCopy.Classes
                     GetFileSystemIntoTreeNode(dirs, iNode);
                     GetFileSystemIntoTreeNode(files, iNode);
                 }
-                catch (Exception) {} //the reason try catch here is have some file denied access
+                catch (Exception) { } //the reason try catch here is have some file denied access in some computer
             }
             GetBranchsExplorersIntoTreeNode(iNode);
         }
@@ -39,11 +42,11 @@ namespace PostBuildCopy.Classes
             {
                 string pathName = Path.GetFileName(strPath);
                 PathTreeNodeData node = new PathTreeNodeData(pathName);
-                iNode.AddChildNoMessageExsit(node);
+                iNode.AddChildNoMessageExist(node);
             }
         }
 
-        // Loading from BranchsExplorer
+        // Loading from BranchsExplorer into node
         public static void GetBranchsExplorersIntoTreeNode(PathTreeNodeData iNode)
         {
             List<string> subPaths = new List<string>();
@@ -51,7 +54,8 @@ namespace PostBuildCopy.Classes
             foreach (string subPath in subPaths)
             {
                 PathTreeNodeData node = new PathTreeNodeData(subPath);
-                iNode.AddChildNoMessageExsit(node);
+                node.ForegroundBinding = Brushes.Magenta;
+                iNode.AddChildNoMessageExist(node);
             }
         }
     }

@@ -1,6 +1,9 @@
 ﻿
 using PostBuildCopy.Classes;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace PostBuildCopy.UI
 {
@@ -13,21 +16,20 @@ namespace PostBuildCopy.UI
         public delegate void SetRootTreeDelegate(PathTreeNodeData iRootNode);
         public SetRootTreeDelegate SetRootTree;
 
+        private List<PathTreeNodeData> m_Root = new List<PathTreeNodeData>();
         public Explorer()
         {
             InitializeComponent();
             Initialize();
             treeViewExplorer.GetChildren = GetTreeNodeChildren;
             treeViewExplorer.OnNodeDrop += treeView_OnNodeDrop;
-
+            treeViewExplorer.OnPathRefresh +=treeViewExplorer_OnPathRefresh;
         }
 
         public void Initialize()
         {
             treeViewExplorer.SetData(ExplorerModel.GetTreeNodeData());
-
         }
-
 
         private void GetTreeNodeChildren(PathTreeNodeData iNode)
         {
@@ -39,6 +41,11 @@ namespace PostBuildCopy.UI
         {
             iNodeTarget.AddChild(iNodeSource);
             BranchsExplorer.SetOneBranchsExplorer(new CouplePath(iNodeTarget.GetFullPath(iNodeTarget), iNodeSource.Path));
+        }
+
+        private void treeViewExplorer_OnPathRefresh()
+        {
+            Initialize();
         }
 
     }

@@ -1,28 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PostBuildCopy.Widowns
 {
-    /// <summary>
-    /// Interaction logic for InputPath.xaml
-    /// </summary>
     public partial class InputPathDialog : Window
     {
+        #region Constructor
+
         public InputPathDialog()
         {
             InitializeComponent();
         }
+
+        public InputPathDialog(string strTextBox)
+        {
+            txtPathName.Text = strTextBox;
+        }
+
+        #endregion
+
+        #region Methods
+
         private void btnDialogOk_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
@@ -34,9 +32,15 @@ namespace PostBuildCopy.Widowns
             txtPathName.Focus();
         }
 
+        #endregion
+
+        #region Property
+
         public string Path
         {
             get { return txtPathName.Text; }
         }
+
+        #endregion
     }
 }

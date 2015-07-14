@@ -3,9 +3,21 @@ using System.Windows.Media;
 
 namespace PostBuildCopy.DataModel
 {
+    /// <summary>
+    /// TreeViewItemBase hold property
+    /// </summary>
     public class TreeViewItemBase : INotifyPropertyChanged
     {
+        #region Private members
+
         private bool isExpanded;
+        private bool allowDropNode = true;
+        private Brush foregroundBinding = Brushes.Black;
+
+        #endregion
+
+        #region Property
+
         public bool IsExpanded
         {
             get { return this.isExpanded; }
@@ -19,21 +31,6 @@ namespace PostBuildCopy.DataModel
             }
         }
 
-        private bool isSelected;
-        public bool IsSelected
-        {
-            get { return this.isSelected; }
-            set
-            {
-                if (value != this.isSelected)
-                {
-                    this.isSelected = value;
-                    NotifyPropertyChanged("IsSelected");
-                }
-            }
-        }
-
-        private bool allowDropNode = true;
         public bool AllowDropNode
         {
             get { return this.allowDropNode; }
@@ -47,7 +44,6 @@ namespace PostBuildCopy.DataModel
             }
         }
 
-        private Brush foregroundBinding = Brushes.Black;
         public Brush ForegroundBinding
         {
             get { return this.foregroundBinding; }
@@ -61,6 +57,10 @@ namespace PostBuildCopy.DataModel
             }
         }
 
+        #endregion
+
+        # region Event and Method NotifyPropertyChanged
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propName)
@@ -68,5 +68,7 @@ namespace PostBuildCopy.DataModel
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
+
+        #endregion
     }
 }

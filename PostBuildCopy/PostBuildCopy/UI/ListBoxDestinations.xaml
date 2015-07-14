@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PostBuildCopy.UI"
              mc:Ignorable="d">
     <Grid>
-        <local:PathListBox x:Name="UCDestination"
+        <local:PathListBox x:Name="lbDestination"
                            AllowDrop="True"
                            AllowDeletePathListBox="True"
                            />

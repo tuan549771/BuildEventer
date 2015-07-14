@@ -10,9 +10,12 @@ namespace PostBuildCopy.Classes
 {
     class XmlLoader
     {
+        // Private member
         private XmlDocument xmlDocument = new XmlDocument();
 
-        //Using load parameters and loaf filters
+        // Loading all argumentNames of a argument
+        // Into a child nodes of root node
+        // And return 
         public PathTreeNodeData LoadListPathFromXmlToNodeTree(string iPathToXmlFile, string iArgumentXml, string iArgumentNameXml)
         {
             xmlDocument.Load(iPathToXmlFile);
@@ -23,12 +26,12 @@ namespace PostBuildCopy.Classes
             foreach (XmlNode argv in argumentNames)
             {
                 if (argv.Name == iArgumentNameXml)
-                    root.AddChild(new PathTreeNodeData(argv.InnerText));
+                    root.AddChildHasMessageExist(new PathTreeNodeData(argv.InnerText));
             }
             return root;
         }
 
-
+        // Loading branchs of explorer
         public List<CouplePath> LoadExplorer(string iPathToXml)
         {
             xmlDocument.Load(iPathToXml);
@@ -52,7 +55,7 @@ namespace PostBuildCopy.Classes
             return couplePaths;
         }
 
-        // Loading ActionsManager
+        // Loading actions
         public List<Action> LoadActionsManager(string savefile_xml)
         {
             xmlDocument.Load(savefile_xml);

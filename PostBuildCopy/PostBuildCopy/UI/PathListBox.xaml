@@ -12,7 +12,7 @@
             <ListBox.ItemTemplate>
                 <HierarchicalDataTemplate>
                     <WrapPanel>
-                        <TextBlock Text="{Binding pathModel, Mode=TwoWay}"/>
+                        <TextBlock Text="{Binding PathModel, Mode=TwoWay}"/>
                     </WrapPanel>
                 </HierarchicalDataTemplate>
             </ListBox.ItemTemplate>

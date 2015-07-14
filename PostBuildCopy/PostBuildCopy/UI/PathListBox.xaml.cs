@@ -7,28 +7,32 @@ using System.Windows.Controls;
 
 namespace PostBuildCopy.UI
 {
-    /// <summary>
-    /// Interaction logic for PathListBox.xaml
-    /// </summary>
     public partial class PathListBox : UserControl
     {
-        // On path Drop
+        #region Events
+
         public delegate void OnPathDropDelegate(PathTreeNodeData iDroppedObject);
         public event OnPathDropDelegate OnPathDrop;
 
-        // On path item Selected
         public delegate void OnSelectedPathDelegate();
         public event OnSelectedPathDelegate OnSelectedPath;
 
-        // On path item Delete
         public delegate void OnDeletePathDelegate();
         public event OnDeletePathDelegate OnDeletePath;
+
+        #endregion
+
+        #region Constructor
 
         public PathListBox()
         {
             InitializeComponent();
             this.DataContext = this;
         }
+
+        #endregion
+
+        #region Methods
 
         public void SetData(ObservableCollection<PathDataModel> iPaths)
         {
@@ -57,6 +61,10 @@ namespace PostBuildCopy.UI
                 OnDeletePath();
         }
 
+        #endregion
+
+        #region Property
+
         public int ItemsCount
         {
             get { return lbPath.Items.Count; }
@@ -73,6 +81,10 @@ namespace PostBuildCopy.UI
             set { lbPath.ItemsSource = value; }
         }
 
+        #endregion
+
+        #region DependencyProperty
+
         public static DependencyProperty AllowDeletePathProperty =
             DependencyProperty.RegisterAttached("AllowDeletePathListBox", typeof(Boolean), typeof(PathTreeView),
             new FrameworkPropertyMetadata(false));
@@ -82,5 +94,7 @@ namespace PostBuildCopy.UI
             get { return (Boolean)GetValue(AllowDeletePathProperty); }
             set { SetValue(AllowDeletePathProperty, value); }
         }
+
+        #endregion
     }
 }

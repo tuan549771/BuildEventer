@@ -1,41 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PostBuildCopy.Classes
 {
-    public class PathDataModel: INotifyPropertyChanged
+    public class PathDataModel : INotifyPropertyChanged
     {
-        // ==================
-        // private members
-        // ==================
+        // Private member
         private string m_Path;
-        public event PropertyChangedEventHandler PropertyChanged;
 
-        // ==================
-        // property
-        // ==================
-        public string pathModel
+        // Property
+        public string PathModel
         {
             get { return m_Path; }
-            set { m_Path = value; NotifyPropertyChanged("pathModel"); }
+            set { m_Path = value; NotifyPropertyChanged("PathModel"); }
         }
 
-        // ==================
-        // constructor
-        // ==================
-        public PathDataModel(string str)
+        // Constructor
+        public PathDataModel(string iStrPath)
         {
-            pathModel = str;
+            PathModel = iStrPath;
         }
 
-        // ==================
-        // method
-        // ==================
+        // Method and event property changed
+        public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             if (PropertyChanged != null)

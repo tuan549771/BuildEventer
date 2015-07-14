@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PostBuildCopy.Classes
 {
     public class ActionManager
     {
-        public static List<Action> actions
+        // Private member
+        private static List<Action> m_s_Actions = new List<Action>();
+        
+        // Property 
+        public static List<Action> Actions
         {
-            get { return m_Actions; }
-            set { m_Actions = value; }
+            get { return m_s_Actions; }
+            set { m_s_Actions = value; }
         }
 
-        private static List<Action> m_Actions = new List<Action>();
-
+        // Actions variable hold all actions
+        // This function used to get all destinations in the actions 
         public static ObservableCollection<PathDataModel> GetListDestinationOfActionManager()
         {
             ObservableCollection<PathDataModel> destinationTemps = new ObservableCollection<PathDataModel>();
-            foreach(CopySourcesToDestination copy in actions)
+            foreach(CopySourcesToDestination copy in Actions)
                 destinationTemps.Add(copy.Destination);
             return destinationTemps;
         }

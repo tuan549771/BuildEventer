@@ -8,9 +8,15 @@ namespace PostBuildCopy.Classes
 {
     public class PathTreeNodeData : TreeViewItemBase
     {
+        #region Private members
+
         public string Path { get; set; }
         public PathTreeNodeData Parent { get; set; }
         public ObservableCollection<PathTreeNodeData> Children { get; set; }
+
+        #endregion
+
+        #region Constructor
 
         public PathTreeNodeData()
         {
@@ -32,29 +38,33 @@ namespace PostBuildCopy.Classes
             Children = new ObservableCollection<PathTreeNodeData>();
         }
 
-        public void AddChild(PathTreeNodeData iChild)
+        #endregion
+
+        #region Methods
+
+        public void AddChildHasMessageExist(PathTreeNodeData iChild)
         {
-            if (false == this.ContainsChildPath(iChild.Path))
-            {
-                string path = String.Copy(iChild.Path);
-                PathTreeNodeData child = new PathTreeNodeData(path, this);
-                child.ForegroundBinding = iChild.ForegroundBinding.CloneCurrentValue();
-                this.Children.Add(child);
-                return;
-            }
-            MessageBox.Show("\"" + iChild.Path + "\"" + " has existed in " + "\"" + this.Path + "\"", "Information");
+            if (false == AddChild(iChild))
+                MessageBox.Show("\"" + iChild.Path + "\"" + " has existed in " + "\"" + this.Path + "\"", "Information");
         }
 
         public void AddChildNoMessageExist(PathTreeNodeData iChild)
         {
+            if (true == AddChild(iChild))
+                return;
+        }
+
+        public bool AddChild(PathTreeNodeData iChild)
+        {
             if (false == this.ContainsChildPath(iChild.Path))
             {
                 string path = String.Copy(iChild.Path);
                 PathTreeNodeData child = new PathTreeNodeData(path, this);
                 child.ForegroundBinding = iChild.ForegroundBinding.CloneCurrentValue();
                 this.Children.Add(child);
-                return;
+                return true;
             }
+            return false;
         }
 
         public void DeleteChild(PathTreeNodeData iChild)
@@ -76,8 +86,7 @@ namespace PostBuildCopy.Classes
 
         public string GetRelativePath(PathTreeNodeData iNode)
         {
-            string currentDirectory = @"C:\Users\Dell\Desktop\New folder\";
-            //string currentDirectory = Directory.GetCurrentDirectory();
+            string currentDirectory = Directory.GetCurrentDirectory();
             if ("\\" == currentDirectory[currentDirectory.Length - 1].ToString())
                 currentDirectory = currentDirectory.Substring(0, currentDirectory.Length - 1);
             string fullPath = GetFullPath(iNode);
@@ -104,5 +113,7 @@ namespace PostBuildCopy.Classes
             }
             return false;
         }
+
+        #endregion
     }
 }

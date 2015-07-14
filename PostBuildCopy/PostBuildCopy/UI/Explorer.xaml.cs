@@ -1,7 +1,6 @@
 ﻿
 using PostBuildCopy.Classes;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -10,21 +9,41 @@ namespace PostBuildCopy.UI
     /// <summary>
     /// Interaction logic for Explorer.xaml
     /// </summary>
+    /// 
     public partial class Explorer : UserControl
     {
-        // On delegate Get Node Children
+        #region On delegate get root node
+
         public delegate void SetRootTreeDelegate(PathTreeNodeData iRootNode);
         public SetRootTreeDelegate SetRootTree;
 
+        #endregion
+
+        #region Private member
+
         private List<PathTreeNodeData> m_Root = new List<PathTreeNodeData>();
+        #endregion
+
+        #region Constructor and Methods
+
         public Explorer()
         {
             InitializeComponent();
-            Initialize();
+            InitializeData();
+            InitializeEvent();
+        }
+
+        public void InitializeData()
+        {
+            treeViewExplorer.SetData(ExplorerModel.GetTreeNodeData());
+        }
+
+        private void InitializeEvent()
+        {
             treeViewExplorer.GetChildren = GetTreeNodeChildren;
             treeViewExplorer.OnNodeDrop += treeView_OnNodeDrop;
-            treeViewExplorer.OnPathRefresh +=treeViewExplorer_OnPathRefresh;
-            treeViewExplorer.OnSetPropertyNodeDrop+=treeViewExplorer_OnSetPropertyNodeDrop;
+            treeViewExplorer.OnPathRefresh += treeViewExplorer_OnPathRefresh;
+            treeViewExplorer.OnSetPropertyNodeDrop += treeViewExplorer_OnSetPropertyNodeDrop;
         }
 
         private PathTreeNodeData treeViewExplorer_OnSetPropertyNodeDrop(PathTreeNodeData iNode)
@@ -32,11 +51,6 @@ namespace PostBuildCopy.UI
             iNode.AllowDropNode = true;
             iNode.ForegroundBinding = Brushes.Magenta;
             return iNode;
-        }
-
-        public void Initialize()
-        {
-            treeViewExplorer.SetData(ExplorerModel.GetTreeNodeData());
         }
 
         private void GetTreeNodeChildren(PathTreeNodeData iNode)
@@ -47,14 +61,15 @@ namespace PostBuildCopy.UI
 
         private void treeView_OnNodeDrop(PathTreeNodeData iNodeSource, PathTreeNodeData iNodeTarget)
         {
-            iNodeTarget.AddChild(iNodeSource);
+            iNodeTarget.AddChildHasMessageExist(iNodeSource);
             BranchsExplorer.SetOneBranchsExplorer(new CouplePath(iNodeTarget.GetFullPath(iNodeTarget), iNodeSource.Path));
         }
 
         private void treeViewExplorer_OnPathRefresh()
         {
-            Initialize();
+            InitializeData();
         }
 
+        #endregion
     }
 }

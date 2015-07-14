@@ -3,23 +3,31 @@ using PostBuildCopy.Classes;
 using PostBuildCopy.UI;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace PostBuildCopy.Widowns
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        #region Private members
+
+        private XmlGenerator xmlGenerator = new XmlGenerator();
+        private XmlLoader xmlLoader = new XmlLoader();
+
+        #endregion
+
+        #region Constructor
+
         public MainWindow()
         {
             InitializeComponent();
             Register();
         }
+
+        #endregion
+
+        #region Methods
 
         private void Register()
         {
@@ -47,12 +55,12 @@ namespace PostBuildCopy.Widowns
                 BranchsExplorer.SetBranchsExplorers(xmlLoader.LoadExplorer(pathToXmlFile));
 
                 // loading data listBoxs
-                ActionManager.actions = xmlLoader.LoadActionsManager(pathToXmlFile);
+                ActionManager.Actions = xmlLoader.LoadActionsManager(pathToXmlFile);
                 listBoxDestinations.ItemSource = ActionManager.GetListDestinationOfActionManager();
                 listBoxDestinations.SelectedIndex = 0;
-                Explorer.Initialize();
+                Explorer.InitializeData();
             }
-            catch (Exception ex) { MessageBox.Show("Load configuration xml:" + ex.Message, "Information"); }
+            catch (Exception ex) { MessageBox.Show("Load configuration xml error: " + ex.Message, "Information"); }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -60,7 +68,7 @@ namespace PostBuildCopy.Widowns
             PathTreeNodeData parameterNode = TreeParameter.GetData();
             PathTreeNodeData filterNode = Filter.GetData();
             List<CouplePath> couplePaths = BranchsExplorer.GetBranchsExplorers();
-            xmlGenerator.GenerateXml(ActionManager.actions, parameterNode, filterNode, couplePaths);
+            xmlGenerator.GenerateXml(ActionManager.Actions, parameterNode, filterNode, couplePaths);
         }
 
         private string GetFileDialog()
@@ -74,7 +82,7 @@ namespace PostBuildCopy.Widowns
             return null;
         }
 
-        private XmlGenerator xmlGenerator = new XmlGenerator();
-        private XmlLoader xmlLoader = new XmlLoader();
+        #endregion
+
     }
 }

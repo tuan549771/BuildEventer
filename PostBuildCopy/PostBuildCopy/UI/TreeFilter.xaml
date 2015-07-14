@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:PostBuildCopy.UI">
     <Grid>
-        <local:PathTreeView x:Name="UCFilter"
+        <local:PathTreeView x:Name="treeFilter"
                             AllowCreateNewPath="True"
                             AllowDeletePath="True"
                             />

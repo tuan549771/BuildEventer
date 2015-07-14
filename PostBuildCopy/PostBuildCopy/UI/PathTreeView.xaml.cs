@@ -1,9 +1,7 @@
 ﻿using PostBuildCopy.Classes;
 using PostBuildCopy.Widowns;
 using System;
-using System.Collections;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,47 +11,59 @@ namespace PostBuildCopy.UI
 {
     public partial class PathTreeView : UserControl
     {
-        // Member private
+        #region Private members
+
         private PathTreeNodeData m_NodeSeleted;
         private Point m_FirstMouseDown;
         private ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
 
-        // On delegate Get Node Children
+        #endregion
+
+        #region Events
+
+        // On delegate get child nodes of a node
         public delegate void GetChildrenDelegate(PathTreeNodeData iNode);
         public GetChildrenDelegate GetChildren;
 
-        // On Allow Node Drop
+        // On allow drop a node
         public delegate PathTreeNodeData HandleOnSetAllowNodeDrop(PathTreeNodeData iNode);
         public event HandleOnSetAllowNodeDrop OnSetAllowNodeDrop;
 
-        // On Property Node Drop
+        // On property drop a node
         public delegate PathTreeNodeData HandleOnSetPropertyNodeDrop(PathTreeNodeData iNode);
         public event HandleOnSetPropertyNodeDrop OnSetPropertyNodeDrop;
 
-        // On Node Drop
+        // On drop a node
         public delegate void HandleOnNodeDrop(PathTreeNodeData iNodeSource, PathTreeNodeData iNodeTarget);
         public event HandleOnNodeDrop OnNodeDrop;
 
-        // On Path Create
+        // On create a path node
         public delegate void HandleOnPathCreate(PathTreeNodeData iNode, string iPath);
         public event HandleOnPathCreate OnPathCreate;
 
-        // On Path Delete
+        // On delete a path node
         public delegate void HandleOnPathDelete(PathTreeNodeData iNode);
         public event HandleOnPathDelete OnPathDelete;
 
-        // On Path Refresh
+        // On refresh tree
         public delegate void HandleOnPathRefresh();
         public event HandleOnPathRefresh OnPathRefresh;
 
-        // Constructor
+        #endregion
+
+        #region Constructor
+
         public PathTreeView()
         {
             InitializeComponent();
             this.DataContext = this;
         }
 
-        // Set Data
+        #endregion
+
+        #region Methods
+
+        // Set data for treeview via data input iNodeRoot
         public void SetData(PathTreeNodeData iNodeRoot)
         {
             m_Root.Add(iNodeRoot);
@@ -169,6 +179,8 @@ namespace PostBuildCopy.UI
             if (e.ChangedButton == MouseButton.Left)
                 m_FirstMouseDown = e.GetPosition(treeView);
         }
+
+        #endregion
 
         #region Dependency property for PathTreeView
 

@@ -1,10 +1,6 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
 
@@ -47,8 +43,8 @@ namespace PostBuildCopy.Classes
             {
                 XElement Sou = new XElement("Sources");
                 foreach (PathDataModel itemSource in (itemAction as CopySourcesToDestination).Sources)
-                    Sou.Add(new XElement("Source", itemSource.pathModel));
-                string pathDest = (itemAction as CopySourcesToDestination).Destination.pathModel;
+                    Sou.Add(new XElement("Source", itemSource.PathModel));
+                string pathDest = (itemAction as CopySourcesToDestination).Destination.PathModel;
                 Actions.Add(new XElement("Copy", new XElement("Destination", pathDest), new XElement(Sou)));
             }
             return Actions;
@@ -76,7 +72,7 @@ namespace PostBuildCopy.Classes
             {
                 if (0 == (itemAction as CopySourcesToDestination).Sources.Count)
                 {
-                    string destfree = (itemAction as CopySourcesToDestination).Destination.pathModel;
+                    string destfree = (itemAction as CopySourcesToDestination).Destination.PathModel;
                     MessageBox.Show("You have not selected Sources to " + destfree, "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }

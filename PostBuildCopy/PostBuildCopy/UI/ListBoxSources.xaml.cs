@@ -4,64 +4,57 @@ using System.Windows.Controls;
 
 namespace PostBuildCopy.UI
 {
-    /// <summary>
-    /// Interaction logic for Sources.xaml
-    /// </summary>
-    /// 
     public delegate void delegateLoadItemListBox(int indexItem);
+
     public partial class Sources : UserControl
     {
+        # region Constructor
+
         public Sources()
         {
             InitializeComponent();
-            Initialize();
+            InitializeEvent();
         }
 
-        public void Initialize()
-        {
-            UCSources.OnPathDrop += UCSources_OnPathDrop;
-            UCSources.OnDeletePath += UCSources_OnDeletePath;
-        }
+        #endregion
+
+        #region Property
 
         public int SelectedIndex
         {
-            get { return UCSources.SelectedIndex; }
-            set { UCSources.SelectedIndex = value; }
+            get { return lbSources.SelectedIndex; }
+            set { lbSources.SelectedIndex = value; }
         }
 
-        public void LoadListBoxItem(int index, delegateLoadItemListBox item)
+        #endregion
+
+        #region Methods
+
+        public void InitializeEvent()
         {
-            item(index);
+            lbSources.OnPathDrop += ListBoxSource_OnPathDrop;
+            lbSources.OnDeletePath += ListBoxSource_OnDeletePath;
         }
 
-        public void LoadListBoxItemSources1(int index)
-        {
-            if (-1 != index)
-                UCSources.ItemSource = (ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources;
-            else
-                UCSources.ItemSource = null;
-        }
-
-        private void UCSources_OnPathDrop(PathTreeNodeData iNodeDropped)
+        private void ListBoxSource_OnPathDrop(PathTreeNodeData iNodeDropped)
         {
             if (iNodeDropped != null)
             {
-                if (false == CheckDropSource(Destinations.indexDest))
+                if (false == CheckDropSource(Destinations.s_IndexDestination))
                     return;
                 string absolutePath = iNodeDropped.GetFullPath(iNodeDropped);
                 string relativePath = iNodeDropped.GetRelativePath(iNodeDropped);
                 PathDataModel PathData = new PathDataModel(relativePath);
-                (ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources.Add(PathData);
-                UCSources.ItemSource = (ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources;
-
+                (ActionManager.Actions[Destinations.s_IndexDestination] as CopySourcesToDestination).Sources.Add(PathData);
+                lbSources.ItemSource = (ActionManager.Actions[Destinations.s_IndexDestination] as CopySourcesToDestination).Sources;
             }
         }
 
-        private void UCSources_OnDeletePath()
+        private void ListBoxSource_OnDeletePath()
         {
-            int indexSource = UCSources.SelectedIndex;
-            if (Destinations.indexDest != -1 && indexSource != -1)// 0 <= (indexDest * indexSource)
-                (ActionManager.actions[Destinations.indexDest] as CopySourcesToDestination).Sources.RemoveAt(indexSource);
+            int indexSource = lbSources.SelectedIndex;
+            if (Destinations.s_IndexDestination != -1 && indexSource != -1)
+                (ActionManager.Actions[Destinations.s_IndexDestination] as CopySourcesToDestination).Sources.RemoveAt(indexSource);
         }
 
         public bool CheckDropSource(int indexDest)
@@ -74,6 +67,19 @@ namespace PostBuildCopy.UI
             return true;
         }
 
+        public void LoadListBoxItem(int index, delegateLoadItemListBox item)
+        {
+            item(index);
+        }
 
+        public void LoadListBoxItemSources1(int index)
+        {
+            if (-1 != index)
+                lbSources.ItemSource = (ActionManager.Actions[Destinations.s_IndexDestination] as CopySourcesToDestination).Sources;
+            else
+                lbSources.ItemSource = null;
+        }
+
+        #endregion
     }
 }

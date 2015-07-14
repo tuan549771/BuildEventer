@@ -6,52 +6,47 @@ using System.Windows.Controls;
 
 namespace PostBuildCopy.UI
 {
-    /// <summary>
-    /// Interaction logic for Destinations.xaml
-    /// </summary>
     public partial class Destinations : UserControl
     {
+
+        public static int s_IndexDestination = -1;
+        public delegateLoadItemListBox delegateLoadItem;
+
+        #region Constructor
+
         public Destinations()
         {
             InitializeComponent();
-            Initialize();
+            InitializeEvent();
         }
 
-        public void Initialize()
-        {
-            UCDestination.OnPathDrop += UCDestination_OnPathDrop;
-            UCDestination.OnDeletePath += UCDestination_OnDeletePath;
-            UCDestination.OnSelectedPath += UCDestination_OnSelectedPath;
-        }
+        #endregion
 
-        private void UCDestination_OnSelectedPath()
-        {
-            indexDest = UCDestination.SelectedIndex;
-            LoadItemListBox(indexDest, itemTemp);
-        }
+        #region Property
 
         public int SelectedIndex
         {
-            get { return UCDestination.SelectedIndex; }
-            set { UCDestination.SelectedIndex = value; }
+            get { return lbDestination.SelectedIndex; }
+            set { lbDestination.SelectedIndex = value; }
         }
 
         public IEnumerable ItemSource
         {
-            set { UCDestination.ItemSource = value; }
+            set { lbDestination.ItemSource = value; }
         }
 
-        // loading listbox using delegate
-        public void LoadItemListBox(int index, delegateLoadItemListBox item)
+        #endregion
+
+        #region Methods
+
+        public void InitializeEvent()
         {
-            if (null != item)
-            {
-                item(index);
-                itemTemp = item;
-            }
+            lbDestination.OnPathDrop += ListBoxDestination_OnPathDrop;
+            lbDestination.OnDeletePath += ListBoxDestination_OnDeletePath;
+            lbDestination.OnSelectedPath += ListBoxDestination_OnSelectedPath;
         }
 
-        private void UCDestination_OnPathDrop(PathTreeNodeData iNodeDropped)
+        private void ListBoxDestination_OnPathDrop(PathTreeNodeData iNodeDropped)
         {
             if (iNodeDropped != null)
             {
@@ -60,18 +55,18 @@ namespace PostBuildCopy.UI
                 PathDataModel PathData = new PathDataModel(relativePath);
                 if (true == CheckFileExist(absolutePath))
                     return;
-                ActionManager.actions.Add(new CopySourcesToDestination(PathData));
-                UCDestination.ItemSource = ActionManager.GetListDestinationOfActionManager();
+                ActionManager.Actions.Add(new CopySourcesToDestination(PathData));
+                lbDestination.ItemSource = ActionManager.GetListDestinationOfActionManager();
             }
         }
 
-        private void UCDestination_OnDeletePath()
+        private void ListBoxDestination_OnDeletePath()
         {
-            if (indexDest != -1)
+            if (s_IndexDestination != -1)
             {
-                ActionManager.actions.RemoveAt(indexDest);
-                UCDestination.ItemSource = ActionManager.GetListDestinationOfActionManager();
-                UCDestination.SelectedIndex = UCDestination.ItemsCount - 1;
+                ActionManager.Actions.RemoveAt(s_IndexDestination);
+                lbDestination.ItemSource = ActionManager.GetListDestinationOfActionManager();
+                lbDestination.SelectedIndex = lbDestination.ItemsCount - 1;
             }
         }
 
@@ -85,7 +80,21 @@ namespace PostBuildCopy.UI
             return false;
         }
 
-        public static int indexDest = -1;
-        public delegateLoadItemListBox itemTemp;
+        private void ListBoxDestination_OnSelectedPath()
+        {
+            s_IndexDestination = lbDestination.SelectedIndex;
+            LoadItemListBox(s_IndexDestination, delegateLoadItem);
+        }
+
+        public void LoadItemListBox(int index, delegateLoadItemListBox item)
+        {
+            if (null != item)
+            {
+                item(index);
+                delegateLoadItem = item;
+            }
+        }
+
+        #endregion
     }
 }

@@ -7,7 +7,7 @@
              mc:Ignorable="d">
     <Grid>
         <local:PathListBox
-            x:Name="UCSources"
+            x:Name="lbSources"
             AllowDeletePathListBox="True"
             AllowDrop="True"
             />

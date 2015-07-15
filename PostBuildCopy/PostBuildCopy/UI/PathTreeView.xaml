@@ -15,7 +15,7 @@
         <TreeView.ItemTemplate>
             
             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                <TextBlock Text="{Binding Path}"/>
+                <TextBlock Text="{Binding Path}" Margin="10,0,10,0" Foreground="{Binding ForegroundBinding}"/>
             </HierarchicalDataTemplate>
         </TreeView.ItemTemplate>
 
@@ -25,7 +25,6 @@
                 <EventSetter Event="TreeViewItem.MouseMove" Handler="TreeMouseMove"/>
                 <EventSetter Event="TreeViewItem.MouseRightButtonDown" Handler="TreeMouseRight"/>
                 <Setter Property="IsExpanded" Value="{Binding IsExpanded}"/>
-                <Setter Property="FontWeight" Value="{Binding FontWeightBinding}"/>
             </Style>
         </TreeView.ItemContainerStyle>
         <TreeView.ContextMenu>

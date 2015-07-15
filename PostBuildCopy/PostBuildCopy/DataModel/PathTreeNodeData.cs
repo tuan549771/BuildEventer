@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Windows.Media;
 
 namespace PostBuildCopy.Classes
 {
@@ -61,7 +62,7 @@ namespace PostBuildCopy.Classes
             {
                 string path = String.Copy(iChild.Path);
                 PathTreeNodeData child = new PathTreeNodeData(path, this);
-                child.FontWeightBinding = iChild.FontWeightBinding;
+                child.ForegroundBinding = iChild.ForegroundBinding;
                 this.Children.Add(child);
                 return true;
             }

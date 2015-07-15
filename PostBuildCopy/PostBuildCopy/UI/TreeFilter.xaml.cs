@@ -8,7 +8,7 @@ namespace PostBuildCopy.UI
         #region Private members
 
         private string m_StrRoot = "Filters";
-        private string m_Suggestion = "Right Click to add parameters\nand you may drag them\ninto Explorer";
+        private string m_Suggestion = "Right Click to add filters\nand you may drag them\ninto Explorer";
         private PathTreeNodeData m_Root;
 
         #endregion
@@ -36,6 +36,11 @@ namespace PostBuildCopy.UI
             treeFilter.SetDataRoot(iRoot);
         }
 
+        // Get data will return a root noot
+        public PathTreeNodeData GetData()
+        {
+            return treeFilter.GetData();
+        } 
         #endregion
     }
 }

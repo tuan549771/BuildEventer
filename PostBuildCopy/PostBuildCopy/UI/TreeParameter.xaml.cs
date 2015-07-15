@@ -39,6 +39,12 @@ namespace PostBuildCopy.UI
             treeParameter.SetDataRoot(iRoot);
         }
 
+        // Get data will return a root noot
+        public PathTreeNodeData GetData()
+        {
+            return treeParameter.GetData();
+        } 
+
         #endregion
     }
 }

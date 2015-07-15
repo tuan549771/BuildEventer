@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Objects>
+  <Parameters>
+    <Parameter>$(Project) or *.dll and so on</Parameter>
+  </Parameters>
+  <Actions>
+    <Copy>
+      <Destination>StorageUtility</Destination>
+      <Sources>
+        <Source>Common\$(Project) or *.dll and so on\$(Project) or *.dll and so on</Source>
+      </Sources>
+    </Copy>
+  </Actions>
+  <Filters>
+    <Filter>$(Project) or *.dll and so on</Filter>
+  </Filters>
+  <BranchExplorers>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\managed_vtstor\Common</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\managed_vtstor\Common\$(Project) or *.dll and so on</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>C:\Users\Dell\Desktop\managed_vtstor\.git</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
+    </BranchExplorer>
+  </BranchExplorers>
+</Objects>

@@ -11,9 +11,9 @@ namespace PostBuildCopy.DataModel
     {
         #region Private members
 
-        private bool isExpanded;
+        private bool isExpanded = false;
         private bool allowDropNode = true;
-        private FontWeight fontWeightBinding = FontWeights.Normal;
+        private Brush foregroundBinding = Brushes.Black;
 
         #endregion
 
@@ -35,25 +35,18 @@ namespace PostBuildCopy.DataModel
         public bool AllowDropNode
         {
             get { return this.allowDropNode; }
-            set
-            {
-                if (value != this.allowDropNode)
-                {
-                    this.allowDropNode = value;
-                    NotifyPropertyChanged("AllowDropNode");
-                }
-            }
+            set { this.allowDropNode = value;}
         }
 
-        public FontWeight FontWeightBinding
+        public Brush ForegroundBinding
         {
-            get { return this.fontWeightBinding; }
+            get { return this.foregroundBinding; }
             set
             {
-                if (value != this.fontWeightBinding)
+                if (value != this.foregroundBinding)
                 {
-                    this.fontWeightBinding = value;
-                    NotifyPropertyChanged("FontWeightBinding");
+                    this.foregroundBinding = value;
+                    NotifyPropertyChanged("ForegroundBinding");
                 }
             }
         }

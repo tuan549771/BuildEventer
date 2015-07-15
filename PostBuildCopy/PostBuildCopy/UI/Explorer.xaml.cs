@@ -23,6 +23,7 @@ namespace PostBuildCopy.UI
         #region Private member
 
         private List<PathTreeNodeData> m_Root = new List<PathTreeNodeData>();
+
         #endregion
 
         #region Constructor and Methods
@@ -44,28 +45,31 @@ namespace PostBuildCopy.UI
             treeViewExplorer.GetChildren = GetTreeNodeChildren;
             treeViewExplorer.OnNodeDrop += treeView_OnNodeDrop;
             treeViewExplorer.OnPathRefresh += treeViewExplorer_OnPathRefresh;
-            treeViewExplorer.OnSetPropertyNodeDrop += treeViewExplorer_OnSetPropertyNodeDrop;
+            treeViewExplorer.OnSetPropertyForSourceNode += treeViewExplorer_OnSetPropertyForSourceNode;
         }
 
-        private PathTreeNodeData treeViewExplorer_OnSetPropertyNodeDrop(PathTreeNodeData iNode)
+        private PathTreeNodeData treeViewExplorer_OnSetPropertyForSourceNode(PathTreeNodeData iNode)
         {
             iNode.AllowDropNode = true;
             string strNameNode = string.Copy(iNode.Path);
             PathTreeNodeData node = new PathTreeNodeData(strNameNode);
-            node.FontWeightBinding = FontWeights.Bold;
+            node.ForegroundBinding = Brushes.Magenta;
             return node;
         }
 
         private void GetTreeNodeChildren(PathTreeNodeData iNode)
         {
             string fullPath = iNode.GetFullPath(iNode);
-            ExplorerModel.GetTreeNode(fullPath, iNode);
+            ExplorerModel.GetChildNodes(iNode);
         }
 
         private void treeView_OnNodeDrop(PathTreeNodeData iNodeSource, PathTreeNodeData iNodeTarget)
         {
-            iNodeTarget.AddChildHasMessageExist(iNodeSource);
-            BranchsExplorer.SetOneBranchsExplorer(new CouplePath(iNodeTarget.GetFullPath(iNodeTarget), iNodeSource.Path));
+            if (true == iNodeSource.AllowDropNode)
+            {
+                iNodeTarget.AddChildHasMessageExist(iNodeSource);
+                BranchsExplorer.SetOneBranchsExplorer(new CouplePath(iNodeTarget.GetFullPath(iNodeTarget), iNodeSource.Path));
+            }
         }
 
         private void treeViewExplorer_OnPathRefresh()

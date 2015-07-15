@@ -76,8 +76,8 @@ namespace PostBuildCopy.UI
             if (container != null)
             {
                 PathTreeNodeData sourceNode = (PathTreeNodeData)e.Data.GetData(typeof(PathTreeNodeData));
-                if (null != OnSetPropertyNodeDrop)
-                    sourceNode = OnSetPropertyNodeDrop(sourceNode);
+                if (null != OnSetPropertyForSourceNode)
+                    sourceNode = OnSetPropertyForSourceNode(sourceNode);
                 PathTreeNodeData targetNode = (PathTreeNodeData)container.Header;
                 if (null != OnNodeDrop)
                     OnNodeDrop(sourceNode, targetNode);
@@ -162,7 +162,7 @@ namespace PostBuildCopy.UI
 
         // On property drop a node
         public delegate PathTreeNodeData HandleOnSetPropertyNodeDrop(PathTreeNodeData iNode);
-        public event HandleOnSetPropertyNodeDrop OnSetPropertyNodeDrop;
+        public event HandleOnSetPropertyNodeDrop OnSetPropertyForSourceNode;
 
         // On drop a node
         public delegate void HandleOnNodeDrop(PathTreeNodeData iNodeSource, PathTreeNodeData iNodeTarget);

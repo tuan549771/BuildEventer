@@ -1,4 +1,8 @@
-﻿using Microsoft.Win32;
+﻿//! Copyright 2015 Virtium Technology, Inc.
+//! All rights reserved
+//!
+
+using Microsoft.Win32;
 using PostBuildCopy.Classes;
 using PostBuildCopy.UI;
 using System;
@@ -12,8 +16,8 @@ namespace PostBuildCopy.Widowns
     {
         #region Private members
 
-        private XmlGenerator xmlGenerator = new XmlGenerator();
-        private XmlLoader xmlLoader = new XmlLoader();
+        private XmlGenerator m_XmlGenerator = new XmlGenerator();
+        private XmlLoader m_XmlLoader = new XmlLoader();
 
         #endregion
 
@@ -41,17 +45,17 @@ namespace PostBuildCopy.Widowns
                 return;
             try
             {
-                // Loading data parameters treeview
-                UIParameter.SetDataFromXmlData(xmlLoader.LoadListPathFromXmlToNodeTree(pathToXmlFile, "Parameters", "Parameter"));
+                // Loading data into parameters treeview
+                UIParameter.SetDataFromXmlData(m_XmlLoader.LoadListPathFromXmlToNodeTree(pathToXmlFile, "Parameters", "Parameter"));
 
-                // Loading data filters treeview
-                UIFilter.SetDataFromXmlData(xmlLoader.LoadListPathFromXmlToNodeTree(pathToXmlFile, "Filters", "Filter"));
+                // Loading data into filters treeview
+                UIFilter.SetDataFromXmlData(m_XmlLoader.LoadListPathFromXmlToNodeTree(pathToXmlFile, "Filters", "Filter"));
 
-                // Loading data the branchs of explorer
-                BranchsExplorer.SetBranchsExplorers(xmlLoader.LoadExplorer(pathToXmlFile));
+                // Loading data into the branchs of explorer
+                BranchsExplorer.SetBranchsExplorers(m_XmlLoader.LoadExplorer(pathToXmlFile));
 
-                // Loading data listBoxs
-                ActionManager.Actions = xmlLoader.LoadActionsManager(pathToXmlFile);
+                // Loading data into listBoxs
+                ActionManager.Actions = m_XmlLoader.LoadActionsManager(pathToXmlFile);
                 listBoxDestinations.ItemSource = ActionManager.GetListDestinationOfActionManager();
                 listBoxDestinations.SelectedIndex = 0;
 
@@ -63,10 +67,10 @@ namespace PostBuildCopy.Widowns
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            PathTreeNodeData parameterNode = UIParameter.treeParameter.GetData();
-            PathTreeNodeData filterNode = UIFilter.treeFilter.GetData();
+            PathTreeNodeData parameterNode = UIParameter.GetData();
+            PathTreeNodeData filterNode = UIFilter.GetData();
             List<CouplePath> couplePaths = BranchsExplorer.GetBranchsExplorers();
-            xmlGenerator.GenerateXml(ActionManager.Actions, parameterNode, filterNode, couplePaths);
+            m_XmlGenerator.GenerateXml(ActionManager.Actions, parameterNode, filterNode, couplePaths);
         }
 
         private string GetFileDialog()

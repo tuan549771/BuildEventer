@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
+using System.Windows.Media;
 
 namespace PostBuildCopy.Classes
 {
@@ -11,45 +12,49 @@ namespace PostBuildCopy.Classes
         public static PathTreeNodeData GetTreeNodeData()
         {
             string currentDirectory = Directory.GetCurrentDirectory();
-            PathTreeNodeData root = new PathTreeNodeData(currentDirectory);
-            GetTreeNode(currentDirectory, root);
-            root.IsExpanded = false;
-            return root;
+            PathTreeNodeData rootNode = new PathTreeNodeData(currentDirectory);
+            GetChildNodes(rootNode);
+            return rootNode;
         }
 
         // Get files system
         // Process assigning files system into the child nodes of the parent node
         // Loading from BranchsExplorer into a root node
-        public static void GetTreeNode(string iPath, PathTreeNodeData iNode)
+        public static void GetChildNodes(PathTreeNodeData iNodePath)
         {
-            if (Directory.Exists(iPath))
+            string fullpath = iNodePath.GetFullPath(iNodePath);
+            if (true == Directory.Exists(fullpath))
             {
                 try
                 {
-                    string[] dirs = Directory.GetDirectories(iPath);
-                    string[] files = Directory.GetFiles(iPath);
-                    GetFileSystemIntoTreeNode(dirs, iNode);
-                    GetFileSystemIntoTreeNode(files, iNode);
+                    string[] dirs = Directory.GetDirectories(fullpath);
+                    string[] files = Directory.GetFiles(fullpath);
+                    GetFileSystemIntoTreeNode(dirs, iNodePath);
+                    GetFileSystemIntoTreeNode(files, iNodePath);
                 }
                 catch (Exception) { } //the reason try catch here is have some file denied access in some computer
             }
-            GetBranchsExplorersIntoTreeNode(iNode);
+            GetBranchsExplorersIntoTreeNode(iNodePath);
         }
 
         // Assigning files system into the child nodes of the parent node
+        // If a path is file set node foreground (colour).
         public static void GetFileSystemIntoTreeNode(string[] strPaths, PathTreeNodeData iNode)
         {
             foreach (string strPath in strPaths)
             {
                 string pathName = Path.GetFileName(strPath);
                 PathTreeNodeData node = new PathTreeNodeData(pathName);
+                if (true == File.Exists(strPath))
+                    node.ForegroundBinding = Brushes.DarkSlateGray;
                 iNode.AddChildNoMessageExist(node);
             }
         }
 
         // Branchs of explorer is that we drop into tree explorer
         // Include the parent path and the sub path
-        // Loading from BranchsExplorers variable into a root node
+        // Set properties for node
+        // Loading from BranchsExplorers variable into a node
         public static void GetBranchsExplorersIntoTreeNode(PathTreeNodeData iNode)
         {
             List<string> subPaths = new List<string>();
@@ -57,7 +62,7 @@ namespace PostBuildCopy.Classes
             foreach (string subPath in subPaths)
             {
                 PathTreeNodeData node = new PathTreeNodeData(subPath);
-                node.FontWeightBinding = FontWeights.Bold;
+                node.ForegroundBinding = Brushes.Magenta;
                 iNode.AddChildNoMessageExist(node);
             }
         }

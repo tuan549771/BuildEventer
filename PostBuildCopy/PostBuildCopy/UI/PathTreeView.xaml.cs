@@ -11,46 +11,6 @@ namespace PostBuildCopy.UI
 {
     public partial class PathTreeView : UserControl
     {
-        #region Private members
-
-        private PathTreeNodeData m_NodeSeleted;
-        private Point m_FirstMouseDown;
-        private ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
-
-        #endregion
-
-        #region Events
-
-        // On delegate get child nodes of a node
-        public delegate void GetChildrenDelegate(PathTreeNodeData iNode);
-        public GetChildrenDelegate GetChildren;
-
-        // On allow drop a node
-        public delegate PathTreeNodeData HandleOnSetAllowNodeDrop(PathTreeNodeData iNode);
-        public event HandleOnSetAllowNodeDrop OnSetAllowNodeDrop;
-
-        // On property drop a node
-        public delegate PathTreeNodeData HandleOnSetPropertyNodeDrop(PathTreeNodeData iNode);
-        public event HandleOnSetPropertyNodeDrop OnSetPropertyNodeDrop;
-
-        // On drop a node
-        public delegate void HandleOnNodeDrop(PathTreeNodeData iNodeSource, PathTreeNodeData iNodeTarget);
-        public event HandleOnNodeDrop OnNodeDrop;
-
-        // On create a path node
-        public delegate void HandleOnPathCreate(PathTreeNodeData iNode, string iPath);
-        public event HandleOnPathCreate OnPathCreate;
-
-        // On delete a path node
-        public delegate void HandleOnPathDelete(PathTreeNodeData iNode);
-        public event HandleOnPathDelete OnPathDelete;
-
-        // On refresh tree
-        public delegate void HandleOnPathRefresh();
-        public event HandleOnPathRefresh OnPathRefresh;
-
-        #endregion
-
         #region Constructor
 
         public PathTreeView()
@@ -94,7 +54,7 @@ namespace PostBuildCopy.UI
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 Point currentPosition = e.GetPosition(treeView);
-                if ((20.0 < Math.Abs(currentPosition.X - m_FirstMouseDown.X)) || (20.0 < Math.Abs(currentPosition.Y - m_FirstMouseDown.Y)))
+                if ((10.0 < Math.Abs(currentPosition.X - m_FirstMouseDown.X)) || (10.0 < Math.Abs(currentPosition.Y - m_FirstMouseDown.Y)))
                 {
                     PathTreeNodeData data = (PathTreeNodeData)treeView.SelectedItem;
                     if (null != OnSetAllowNodeDrop)
@@ -179,6 +139,46 @@ namespace PostBuildCopy.UI
             if (e.ChangedButton == MouseButton.Left)
                 m_FirstMouseDown = e.GetPosition(treeView);
         }
+
+        #endregion
+
+        #region Private members
+
+        private PathTreeNodeData m_NodeSeleted;
+        private Point m_FirstMouseDown;
+        private ObservableCollection<PathTreeNodeData> m_Root = new ObservableCollection<PathTreeNodeData>();
+
+        #endregion
+
+        #region Events
+
+        // On delegate get child nodes of a node
+        public delegate void GetChildrenDelegate(PathTreeNodeData iNode);
+        public GetChildrenDelegate GetChildren;
+
+        // On allow drop a node
+        public delegate PathTreeNodeData HandleOnSetAllowNodeDrop(PathTreeNodeData iNode);
+        public event HandleOnSetAllowNodeDrop OnSetAllowNodeDrop;
+
+        // On property drop a node
+        public delegate PathTreeNodeData HandleOnSetPropertyNodeDrop(PathTreeNodeData iNode);
+        public event HandleOnSetPropertyNodeDrop OnSetPropertyNodeDrop;
+
+        // On drop a node
+        public delegate void HandleOnNodeDrop(PathTreeNodeData iNodeSource, PathTreeNodeData iNodeTarget);
+        public event HandleOnNodeDrop OnNodeDrop;
+
+        // On create a path node
+        public delegate void HandleOnPathCreate(PathTreeNodeData iNode, string iPath);
+        public event HandleOnPathCreate OnPathCreate;
+
+        // On delete a path node
+        public delegate void HandleOnPathDelete(PathTreeNodeData iNode);
+        public event HandleOnPathDelete OnPathDelete;
+
+        // On refresh tree
+        public delegate void HandleOnPathRefresh();
+        public event HandleOnPathRefresh OnPathRefresh;
 
         #endregion
 

@@ -9,19 +9,6 @@ namespace PostBuildCopy.UI
 {
     public partial class PathListBox : UserControl
     {
-        #region Events
-
-        public delegate void OnPathDropDelegate(PathTreeNodeData iDroppedObject);
-        public event OnPathDropDelegate OnPathDrop;
-
-        public delegate void OnSelectedPathDelegate();
-        public event OnSelectedPathDelegate OnSelectedPath;
-
-        public delegate void OnDeletePathDelegate();
-        public event OnDeletePathDelegate OnDeletePath;
-
-        #endregion
-
         #region Constructor
 
         public PathListBox()
@@ -80,6 +67,19 @@ namespace PostBuildCopy.UI
         {
             set { lbPath.ItemsSource = value; }
         }
+
+        #endregion
+
+        #region Events
+
+        public delegate void OnPathDropDelegate(PathTreeNodeData iDroppedObject);
+        public event OnPathDropDelegate OnPathDrop;
+
+        public delegate void OnSelectedPathDelegate();
+        public event OnSelectedPathDelegate OnSelectedPath;
+
+        public delegate void OnDeletePathDelegate();
+        public event OnDeletePathDelegate OnDeletePath;
 
         #endregion
 

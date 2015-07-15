@@ -5,18 +5,18 @@ namespace PostBuildCopy.Classes
     {
         // Private member
         // A CouplePath include both sub path and parent path
-        private string parentPath;
-        private string subPath;
+        private string m_ParentPath;
+        private string m_SubPath;
 
         // Property
-        public string ParentPath { get { return parentPath; } set { parentPath = value; } }
-        public string SubPath { get { return subPath; } set { subPath = value; } }
+        public string ParentPath { get { return m_ParentPath; } set { m_ParentPath = value; } }
+        public string SubPath { get { return m_SubPath; } set { m_SubPath = value; } }
 
         // Constructor
         public CouplePath(string iParentPath, string iSubPath)
         {
-            parentPath = iParentPath;
-            subPath = iSubPath;
+            m_ParentPath = iParentPath;
+            m_SubPath = iSubPath;
         }
 
         // Constructor

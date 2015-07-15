@@ -25,6 +25,7 @@ namespace PostBuildCopy.Classes
                 return;
 
             XDocument xmlFile = new XDocument(new XElement("Objects"));
+
             xmlFile.Element("Objects").Add(SetPathNodeToXmlFile("Parameters", "Parameter", iRootParameterNode));
             xmlFile.Element("Objects").Add(SetActionsToXmlFile(iListAction));
             xmlFile.Element("Objects").Add(SetPathNodeToXmlFile("Filters", "Filter", iRootFilterNode));
@@ -36,6 +37,7 @@ namespace PostBuildCopy.Classes
 
         #region Private functions
 
+        // Set detinations and sources of actions into xml file. 
         private XElement SetActionsToXmlFile(List<Action> iListAction)
         {
             XElement Actions = new XElement("Actions");
@@ -50,6 +52,8 @@ namespace PostBuildCopy.Classes
             return Actions;
         }
 
+        // This function used to
+        // Set argumentName of a argurment into xml file 
         private XElement SetPathNodeToXmlFile(string iParent, string iSub, PathTreeNodeData iRootNode)
         {
             XElement parents = new XElement(iParent);
@@ -58,6 +62,10 @@ namespace PostBuildCopy.Classes
             return parents;
         }
 
+
+        // This function used to set branchs of explorer 
+        // A branch include a couple paths: subpath and parentpath
+        // Into xml file
         private XElement SetBranchExplorerToXmlFile(List<CouplePath> iCouplePaths)
         {
             XElement branchExplorer = new XElement("BranchExplorers");
@@ -66,6 +74,8 @@ namespace PostBuildCopy.Classes
             return branchExplorer;
         }
 
+        // Check each action include sources in destination
+        // If not output a message to inform
         private bool InformationWarning(List<Action> iListAction)
         {
             foreach (object itemAction in iListAction)
@@ -73,18 +83,19 @@ namespace PostBuildCopy.Classes
                 if (0 == (itemAction as CopySourcesToDestination).Sources.Count)
                 {
                     string destfree = (itemAction as CopySourcesToDestination).Destination.PathModel;
-                    MessageBox.Show("You have not selected Sources to " + destfree, "Warning", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("You have not selected Sources to " + destfree, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
             }
             return true;
         }
 
+        // Save file Dialog
         private string SaveFile()
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "xml files (*.xml)|*.xml";
-            sfd.FileName = "generate";
+            sfd.FileName = "BuildEventer";
             sfd.Title = "Save XML File";
             sfd.InitialDirectory = Directory.GetCurrentDirectory();
             if (true == sfd.ShowDialog())

@@ -1,6 +1,7 @@
 ﻿
 using PostBuildCopy.Classes;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -49,14 +50,16 @@ namespace PostBuildCopy.UI
         private PathTreeNodeData treeViewExplorer_OnSetPropertyNodeDrop(PathTreeNodeData iNode)
         {
             iNode.AllowDropNode = true;
-            iNode.ForegroundBinding = Brushes.Magenta;
-            return iNode;
+            string strNameNode = string.Copy(iNode.Path);
+            PathTreeNodeData node = new PathTreeNodeData(strNameNode);
+            node.FontWeightBinding = FontWeights.Bold;
+            return node;
         }
 
         private void GetTreeNodeChildren(PathTreeNodeData iNode)
         {
-            string cd = iNode.GetFullPath(iNode);
-            ExplorerModel.GetTreeNode(cd, iNode);
+            string fullPath = iNode.GetFullPath(iNode);
+            ExplorerModel.GetTreeNode(fullPath, iNode);
         }
 
         private void treeView_OnNodeDrop(PathTreeNodeData iNodeSource, PathTreeNodeData iNodeTarget)

@@ -9,36 +9,36 @@ namespace PostBuildCopy.Classes
         // We dragged and dropped into explorer
         // Include a couple path
         // Parent path and sub path
-        private static List<CouplePath> branchsExplorers = new List<CouplePath>();
+        private static List<CouplePath> s_m_BranchsExplorers = new List<CouplePath>();
 
         // Get all branches in branchsExplorers
         public static List<CouplePath> GetBranchsExplorers()
         {
-            return branchsExplorers;
+            return s_m_BranchsExplorers;
         }
 
         // Set a branch of explorer into branchsExplorers variable
         public static void SetOneBranchsExplorer(CouplePath iCouplePath)
         {
-            foreach (CouplePath couplePath in branchsExplorers)
+            foreach (CouplePath couplePath in s_m_BranchsExplorers)
             {
                 if ((couplePath.ParentPath == iCouplePath.ParentPath) && (couplePath.SubPath == iCouplePath.SubPath))
                     return;
             }
-            branchsExplorers.Add(iCouplePath);
+            s_m_BranchsExplorers.Add(iCouplePath);
         }
 
         // Set all branches of branchsExplorers variable
         public static void SetBranchsExplorers(List<CouplePath> iCouplePaths)
         {
-            branchsExplorers = iCouplePaths;
+            s_m_BranchsExplorers = iCouplePaths;
         }
 
         // Get and return all sub paths of a parent path
         public static List<string> GetSubPathExplorer(string iParentPath)
         {
             List<string> subPaths = new List<string>();
-            foreach (CouplePath couplePath in branchsExplorers)
+            foreach (CouplePath couplePath in s_m_BranchsExplorers)
             {
                 if (iParentPath == couplePath.ParentPath)
                     subPaths.Add(couplePath.SubPath);

@@ -38,7 +38,7 @@
 
                 <GridSplitter Width="2" Background="Gray" Grid.Column="0" Grid.Row="1"  />
 
-                <local:Filter x:Name="UIFilter" Grid.Column="1" Grid.Row="1"/>
+                <local:TreeFilter x:Name="UIFilter" Grid.Column="1" Grid.Row="1"/>
             </Grid>
             <!--######################-->
 

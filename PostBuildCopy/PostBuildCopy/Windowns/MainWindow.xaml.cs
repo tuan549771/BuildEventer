@@ -41,23 +41,21 @@ namespace PostBuildCopy.Widowns
                 return;
             try
             {
-                // loading data parameters treeview
-                PathTreeNodeData parameterNode = new PathTreeNodeData();
-                parameterNode = xmlLoader.LoadListPathFromXmlToNodeTree(pathToXmlFile, "Parameters", "Parameter");
-                UIParameter.SetDataRoot(parameterNode);
+                // Loading data parameters treeview
+                UIParameter.SetDataFromXmlData(xmlLoader.LoadListPathFromXmlToNodeTree(pathToXmlFile, "Parameters", "Parameter"));
 
-                // loading data filters treeview
-                PathTreeNodeData filterNode = new PathTreeNodeData();
-                filterNode = xmlLoader.LoadListPathFromXmlToNodeTree(pathToXmlFile, "Filters", "Filter");
-                UIFilter.SetDataRoot(filterNode);
+                // Loading data filters treeview
+                UIFilter.SetDataFromXmlData(xmlLoader.LoadListPathFromXmlToNodeTree(pathToXmlFile, "Filters", "Filter"));
 
-                // loading data the branchs of explorer
+                // Loading data the branchs of explorer
                 BranchsExplorer.SetBranchsExplorers(xmlLoader.LoadExplorer(pathToXmlFile));
 
-                // loading data listBoxs
+                // Loading data listBoxs
                 ActionManager.Actions = xmlLoader.LoadActionsManager(pathToXmlFile);
                 listBoxDestinations.ItemSource = ActionManager.GetListDestinationOfActionManager();
                 listBoxDestinations.SelectedIndex = 0;
+
+                // Initialize Explorer
                 Explorer.InitializeData();
             }
             catch (Exception ex) { MessageBox.Show("Load configuration xml error: " + ex.Message, "Information"); }
@@ -65,8 +63,8 @@ namespace PostBuildCopy.Widowns
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            PathTreeNodeData parameterNode = TreeParameter.GetData();
-            PathTreeNodeData filterNode = Filter.GetData();
+            PathTreeNodeData parameterNode = UIParameter.treeParameter.GetData();
+            PathTreeNodeData filterNode = UIFilter.treeFilter.GetData();
             List<CouplePath> couplePaths = BranchsExplorer.GetBranchsExplorers();
             xmlGenerator.GenerateXml(ActionManager.Actions, parameterNode, filterNode, couplePaths);
         }

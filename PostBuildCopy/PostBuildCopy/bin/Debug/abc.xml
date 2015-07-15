@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Objects>
+  <Parameters>
+    <Parameter>$(Project) or *.dll and so on</Parameter>
+  </Parameters>
+  <Actions>
+    <Copy>
+      <Destination>$(Project) or *.dll and so on</Destination>
+      <Sources>
+        <Source>$(Project) or *.dll and so on\$(Project) or *.dll and so on</Source>
+        <Source>$(Project) or *.dll and so on\$(Project) or *.dll and so on 2</Source>
+      </Sources>
+    </Copy>
+    <Copy>
+      <Destination>$(Project) or *.dll and so on\$(Project) or *.dll and so on</Destination>
+      <Sources>
+        <Source>$(Project) or *.dll and so on\$(Project) or *.dll and so on 2</Source>
+      </Sources>
+    </Copy>
+  </Actions>
+  <Filters>
+    <Filter>$(Project) or *.dll and so on</Filter>
+    <Filter>$(Project) or *.dll and so on 2</Filter>
+  </Filters>
+  <BranchExplorers>
+    <BranchExplorer>
+      <Parent>D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\bin\Debug</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\bin\Debug\$(Project) or *.dll and so on</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\bin\Debug\$(Project) or *.dll and so on\$(Project) or *.dll and so on</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\bin\Debug\$(Project) or *.dll and so on</Parent>
+      <Sub>$(Project) or *.dll and so on 2</Sub>
+    </BranchExplorer>
+    <BranchExplorer>
+      <Parent>D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\bin\Debug\$(Project) or *.dll and so on\$(Project) or *.dll and so on 2</Parent>
+      <Sub>$(Project) or *.dll and so on</Sub>
+    </BranchExplorer>
+  </BranchExplorers>
+</Objects>

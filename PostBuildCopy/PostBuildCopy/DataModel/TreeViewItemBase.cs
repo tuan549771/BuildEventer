@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Media;
 
 namespace PostBuildCopy.DataModel
@@ -12,7 +13,7 @@ namespace PostBuildCopy.DataModel
 
         private bool isExpanded;
         private bool allowDropNode = true;
-        private Brush foregroundBinding = Brushes.Black;
+        private FontWeight fontWeightBinding = FontWeights.Normal;
 
         #endregion
 
@@ -44,15 +45,15 @@ namespace PostBuildCopy.DataModel
             }
         }
 
-        public Brush ForegroundBinding
+        public FontWeight FontWeightBinding
         {
-            get { return this.foregroundBinding; }
+            get { return this.fontWeightBinding; }
             set
             {
-                if (value != this.foregroundBinding)
+                if (value != this.fontWeightBinding)
                 {
-                    this.foregroundBinding = value;
-                    NotifyPropertyChanged("ForegroundBinding");
+                    this.fontWeightBinding = value;
+                    NotifyPropertyChanged("FontWeightBinding");
                 }
             }
         }

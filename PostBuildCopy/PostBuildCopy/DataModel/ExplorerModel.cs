@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Media;
+using System.Windows;
 
 namespace PostBuildCopy.Classes
 {
@@ -57,7 +57,7 @@ namespace PostBuildCopy.Classes
             foreach (string subPath in subPaths)
             {
                 PathTreeNodeData node = new PathTreeNodeData(subPath);
-                node.ForegroundBinding = Brushes.Magenta;
+                node.FontWeightBinding = FontWeights.Bold;
                 iNode.AddChildNoMessageExist(node);
             }
         }

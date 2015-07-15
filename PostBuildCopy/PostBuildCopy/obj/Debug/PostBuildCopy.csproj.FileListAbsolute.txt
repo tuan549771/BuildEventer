@@ -72,3 +72,5 @@ D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\ListBoxDe
 D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\ListBoxSources.g.cs
 D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\ListBoxDestinations.baml
 D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\ListBoxSources.baml
+D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeArgument.g.cs
+D:\MyWorkingHere\BuildEventer\PostBuildCopy\PostBuildCopy\obj\Debug\UI\TreeArgument.baml

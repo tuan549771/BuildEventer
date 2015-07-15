@@ -70,6 +70,9 @@
     <Compile Include="UI\Explorer.xaml.cs">
       <DependentUpon>Explorer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\TreeArgument.xaml.cs">
+      <DependentUpon>TreeArgument.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\TreeFilter.xaml.cs">
       <DependentUpon>TreeFilter.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Explorer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\TreeArgument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

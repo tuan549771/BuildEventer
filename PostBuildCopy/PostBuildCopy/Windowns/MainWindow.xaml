@@ -1,0 +1,75 @@
+﻿<Window x:Class="PostBuildCopy.Widowns.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:PostBuildCopy.UI"
+        Title="PostBuildCopy" Height="500" Width="900"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized" 
+        Closed="Window_Closed"
+        Icon="/PostBuildCopy;component/Images/virtium.png"
+        >
+    <Border Margin="10" BorderThickness="0.5" BorderBrush="Black">
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60*"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="293*"/>
+                <RowDefinition Height="90*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="320*"/>
+                <ColumnDefinition Width="280*"/>
+                <ColumnDefinition Width="300*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Tree Explorer -->
+            <local:Explorer x:Name="Explorer" Grid.Column="0" Grid.Row="2"/>
+            <!-- Splitter -->
+            <GridSplitter Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Bottom" Height="2" Background="Gray"></GridSplitter>
+            <!-- Column Grid -->
+            <Grid Grid.Row="3" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="59*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="240"/>
+                    <ColumnDefinition Width="67*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.ColumnSpan="2" Height="25" Background="Gray">Parameters and Filters</Label>
+                <!-- Tree Parameter -->
+                <local:TreeParameter x:Name="UIParameter" Grid.Column="0" Grid.Row="1">
+                </local:TreeParameter>
+
+                <GridSplitter Width="2" Background="Gray" Grid.Column="0" Grid.Row="1"  />
+                <!-- Tree Filter -->
+                <local:TreeFilter x:Name="UIFilter" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+            <!--######################-->
+
+            <GridSplitter Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Width="3" Background="Black" BorderBrush="Gray" BorderThickness="2"/>
+
+            <!-- List Box Destination -->
+            <local:Destinations x:Name="listBoxDestinations" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2"/>
+            <GridSplitter Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" Width="3" Background="Black" BorderBrush="Gray" BorderThickness="2"/>
+            <!-- List Box Sources -->
+            <local:Sources x:Name="listBoxSources"  Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
+
+            <UniformGrid Grid.Row="0" Grid.ColumnSpan="3" Columns="2"
+                     HorizontalAlignment="Center" Height="35"
+                     >
+                <Button Width="40"  Height="35"
+        	        Click="btnLoadXml_Click"
+        	        >Load</Button>
+                <Button Width="40"  Height="35" Margin="10,0,0,0"
+                    Click="btnSave_Click"
+                    >Save</Button>
+            </UniformGrid>
+
+            <Label Grid.Row="1" Grid.Column="0" Height="25" Background="Gray">Explorer</Label>
+            <Label Grid.Row="1" Grid.Column="1" Height="25" Background="Gray" Margin="2,0,0,0">Destinations</Label>
+            <Label Grid.Row="1" Grid.Column="2" Height="25" Background="Gray" Margin="2,0,0,0">Sources</Label>
+        </Grid>
+    </Border>
+</Window>

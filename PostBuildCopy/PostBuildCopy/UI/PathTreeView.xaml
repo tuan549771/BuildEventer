@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="PostBuildCopy.UI.PathTreeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PostBuildCopy.Classes"
+             mc:Ignorable="d"
+             x:Name="UCPathTreeView">
+
+    <!-- TREE -->
+    <TreeView Name="treeView" 
+              TreeViewItem.Expanded="TreeExpanded"
+              TreeViewItem.MouseDown="TreeMouseDown">
+        <TreeView.ItemTemplate>
+            <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="14" Height="14" Source="{Binding Path=ImagePath}"
+                           HorizontalAlignment="Left" VerticalAlignment="Center" ></Image>
+                    <TextBlock Text="{Binding Path=Path}" FontSize="12"
+                               Foreground="{Binding Path=ForegroundBinding}"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </HierarchicalDataTemplate>
+        </TreeView.ItemTemplate>
+
+        <TreeView.ItemContainerStyle>
+            <Style TargetType="TreeViewItem">
+                <EventSetter Event="TreeViewItem.Drop" Handler="TreeDrop"/>
+                <EventSetter Event="TreeViewItem.MouseMove" Handler="TreeMouseMove"/>
+                <EventSetter Event="TreeViewItem.MouseRightButtonDown" Handler="TreeMouseRight"/>
+                <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded}"/>
+                <Setter Property="IsEnabled" Value="{Binding Path=IsEnabled}"/>
+            </Style>
+        </TreeView.ItemContainerStyle>
+        <TreeView.ContextMenu>
+            <ContextMenu>
+                <MenuItem Name="newItem" 
+                          Header="New" 
+                          Click="TreeNewItem" 
+                          IsEnabled="{Binding Path=AllowCreateNewPath}"/>
+                <MenuItem Name="deleteItem" 
+                          Header="Delete" 
+                          Click="TreeDeleteItem" 
+                          IsEnabled="{Binding Path=AllowDeletePath}"/>
+                <MenuItem Name="refreshItem"
+                          Header="Refresh"
+                          Click="TreeRefreshItem"
+                          IsEnabled="{Binding Path=AllowRefresh}"/>
+            </ContextMenu>
+        </TreeView.ContextMenu>
+    </TreeView>
+
+</UserControl>

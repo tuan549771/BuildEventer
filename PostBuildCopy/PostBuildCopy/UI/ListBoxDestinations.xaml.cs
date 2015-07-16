@@ -1,4 +1,19 @@
-﻿using PostBuildCopy.Classes;
+﻿/*
+<License>
+Copyright 2015 Virtium Technology
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http ://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</License>
+*/
+
+using PostBuildCopy.Classes;
 using System.Collections;
 using System.IO;
 using System.Windows;
@@ -48,7 +63,7 @@ namespace PostBuildCopy.UI
 
         private void ListBoxDestination_OnPathDrop(PathTreeNodeData iNodeDropped)
         {
-            if (iNodeDropped != null)
+            if (null != iNodeDropped)
             {
                 string absolutePath = iNodeDropped.GetFullPath(iNodeDropped);
                 string relativePath = iNodeDropped.GetRelativePath(iNodeDropped);
@@ -62,7 +77,7 @@ namespace PostBuildCopy.UI
 
         private void ListBoxDestination_OnDeletePath()
         {
-            if (s_IndexDestination != -1)
+            if (-1 != s_IndexDestination)
             {
                 ActionManager.Actions.RemoveAt(s_IndexDestination);
                 lbDestination.ItemSource = ActionManager.GetListDestinationOfActionManager();

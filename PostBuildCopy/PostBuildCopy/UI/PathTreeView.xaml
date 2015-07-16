@@ -13,9 +13,8 @@
               TreeViewItem.MouseDown="TreeMouseDown"
               FontSize="14">
         <TreeView.ItemTemplate>
-            
             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                <TextBlock Text="{Binding Path}" Margin="10,0,10,0" Foreground="{Binding ForegroundBinding}"/>
+                <TextBlock Text="{Binding Path}" Margin="3,0,3,0" Foreground="{Binding ForegroundBinding}"/>
             </HierarchicalDataTemplate>
         </TreeView.ItemTemplate>
 

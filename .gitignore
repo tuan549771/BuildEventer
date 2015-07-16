@@ -1,0 +1,14 @@
+
+*.sln
+*.suo
+*.csproj
+*.bqd
+*.oqt
+
+
+
+Python
+Xml
+PostBuildCopy\PostBuildCopy\bin
+PostBuildCopy\PostBuildCopy\obj
+PostBuildCopy\PostBuildCopy\Properties

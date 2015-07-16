@@ -21,13 +21,13 @@ namespace PostBuildCopy.Classes
     public class ActionManager
     {
         // Private member
-        private static List<Action> m_s_Actions = new List<Action>();
+        private static List<Action> s_Actions = new List<Action>();
         
         // Property 
         public static List<Action> Actions
         {
-            get { return m_s_Actions; }
-            set { m_s_Actions = value; }
+            get { return s_Actions; }
+            set { s_Actions = value; }
         }
 
         // Actions variable hold all actions
